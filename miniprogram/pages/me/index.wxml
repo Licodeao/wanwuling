@@ -1,0 +1,12 @@
+<view class="container">
+  <view class="top">
+    <button class="user" open-type="getPhoneNumber" bindgetphonenumber="handleLogin">
+      <image src="../../images/default-avatar.png" mode="aspectFill" style="width: 70px; height: 70px; border-radius: 50%;" />
+      <view class="info">
+        <view class="name">{{defaultName}}</view>
+        <!-- <view class="other">所属设备</view> -->
+      </view>
+    </button>
+  </view>
+  <view class="bottom"></view>
+</view>
