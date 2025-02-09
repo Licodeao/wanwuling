@@ -1,6 +1,4 @@
 {
-  "usingComponents": {
-    "cloud-tip-modal": "/components/cloudTipModal/index"
-  },
-  "navigationBarBackgroundColor": "#fff"
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTitleText": "首页"
 }
