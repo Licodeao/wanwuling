@@ -1,5 +1,10 @@
 Page({
   data: {
-    defaultName: "未登陆"
+    defaultName: "立即登陆"
   },
+  handleLogin() {
+    wx.navigateTo({
+      url: '/pages/login/index',
+    })
+  }
 })

@@ -7,26 +7,10 @@
     "miniprogram": {
       "list": [
         {
-          "name": "首页-快速开始",
-          "pathName": "pages/index/index",
-          "query": ""
-        },
-        {
-          "name": "商品列表",
-          "pathName": "pages/goods-list/index",
+          "name": "pages/login/index",
+          "pathName": "pages/login/index",
           "query": "",
-          "scene": null
-        },
-        {
-          "name": "云开发示例",
-          "pathName": "pages/examples/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "个人中心",
-          "pathName": "pages/user-center/index",
-          "query": "",
+          "launchMode": "default",
           "scene": null
         }
       ]
