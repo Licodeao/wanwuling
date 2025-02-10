@@ -14,4 +14,4 @@ $RECYCLE.BIN/
 node_modules/
 
 # Secret Information
-envList.js
+miniprogram/envList.js
