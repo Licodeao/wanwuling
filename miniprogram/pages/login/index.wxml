@@ -1,0 +1,22 @@
+<view class="container">
+  <block wx:if="{{skeletonLoading}}">
+    <van-skeleton avatar animate avatar-size="300rpx" class="skelton"></van-skeleton>
+  </block>
+  <block wx:else>
+    <image src="{{logoImgUrl}}" style="width: 380rpx; height: 300rpx; border-radius: 50%;" class="logo" />
+  </block>
+  <view class="words">
+    <text style="font-family: fantasy;">Hello! </text>
+    <text style="font-family:cursive;margin-left: 10rpx;">欢迎来到万物灵</text>
+  </view>
+  <button class="login-btn">
+    <view class="btn-wrapper">
+      <van-icon name="phone-o" size="40rpx" />
+      <text style="font-weight: 400; font-size: 30rpx;">手机号快捷登录</text>
+    </view>
+  </button>
+  <view class="tips">
+    <van-icon name="info-o" />
+    <text style="font-size: 20rpx;">登录/注册即视为你同意<text style="color: #479bfc;" bind:tap="navigateToProtocol" data-type="service">《服务条款》</text>和<text style="color: #479bfc;" bind:tap="navigateToProtocol" data-type="privacy">《万物灵隐私协议》</text></text>
+  </view>
+</view>

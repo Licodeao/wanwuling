@@ -1,4 +1,7 @@
 {
   "navigationBarBackgroundColor": "#fff",
-  "navigationBarTitleText": "个人空间"
+  "navigationBarTitleText": "个人空间",
+  "usingComponents": {
+    "van-icon": "@vant/weapp/icon/index"
+  }
 }

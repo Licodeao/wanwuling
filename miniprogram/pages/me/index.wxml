@@ -1,11 +1,14 @@
 <view class="container">
-  <view class="top">
+  <view class="top" bind:tap="handleLogin">
     <view class="user">
-      <image src="../../images/default-avatar.png" mode="aspectFill" style="width: 140rpx; height: 140rpx; border-radius: 50%;" />
-      <view class="info">
-        <view class="name">{{defaultName}}</view>
-        <!-- <view class="other">所属设备</view> -->
+      <view class="left">
+        <image src="../../images/default-avatar.png" mode="aspectFill" style="width: 140rpx; height: 140rpx; border-radius: 50%;" />
+        <view class="info">
+          <view class="name">{{defaultName}}</view>
+          <!-- <view class="other">所属设备</view> -->
+        </view>
       </view>
+      <van-icon name="arrow" />
     </view>
   </view>
   <view class="bottom"></view>
