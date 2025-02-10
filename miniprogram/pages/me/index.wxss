@@ -4,9 +4,9 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin: 10px;
+  margin: 20rpx;
   /* background-color: aqua; */
-  gap: 10px;
+  gap: 20rpx;
 }
 
 .container .top {
@@ -20,7 +20,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  gap: 20px;
+  gap: 40rpx;
   /* background-color: green; */
 }
 
