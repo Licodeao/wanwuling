@@ -12,6 +12,68 @@ Page({
   onLoad() {
     this.getImageTempUrl()
   },
+  // 手机号登录函数
+  loginByPhone(e) {
+    let code = e.detail.code
+    console.log('code', code)
+
+    if (!code) {
+      wx.showToast({
+        title: '用户未授权',
+        icon: 'error',
+        duration: 1000
+      })
+      return
+    }
+
+    wx.cloud.callFunction({
+      name: 'openapi',
+      data: {
+        action: 'phonenumber.getPhoneNumber',
+        body: {
+          code
+        }
+      }
+    }).then(res => {
+      console.log(res)
+      if (res.result && res.result.phoneInfo) {
+        let { purePhoneNumber } = res.result.phoneInfo
+        wx.cloud.callFunction({
+          name: 'login',
+          data: {
+            userPhone: purePhoneNumber
+          }
+        }).then(dbRes => {
+          console.log(dbRes)
+          if (dbRes.result && dbRes.result.data) {
+            wx.setStorageSync('userInfo', dbRes.result.data)
+            wx.showToast({
+              icon: 'success',
+              title: dbRes.result.message,
+              duration: 1000,
+              success: function() {
+                setTimeout(() => {
+                  wx.navigateBack({
+                    delta: 1
+                  })
+                }, 1300)
+              }
+            })
+          }
+        }).catch(dbErr => {
+          console.log(dbErr)
+        })
+      } else {
+        wx.showToast({
+          title: '登录失败',
+          icon: 'error',
+          duration: 1000
+        })
+      }
+    }).catch(err => {
+      console.log(err)
+    })
+  },
 
   // 获取云存储中logo的临时路径
   getImageTempUrl() {
