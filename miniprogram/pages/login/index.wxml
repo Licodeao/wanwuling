@@ -9,7 +9,7 @@
     <text style="font-family: fantasy;">Hello! </text>
     <text style="font-family:cursive;margin-left: 10rpx;">欢迎来到万物灵</text>
   </view>
-  <button class="login-btn">
+  <button class="login-btn" open-type="getPhoneNumber" bindgetphonenumber="loginByPhone">
     <view class="btn-wrapper">
       <van-icon name="phone-o" size="40rpx" />
       <text style="font-weight: 400; font-size: 30rpx;">手机号快捷登录</text>

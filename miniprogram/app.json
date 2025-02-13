@@ -6,7 +6,8 @@
     "pages/content/index",
     "pages/login/index",
     "pages/privacy/index",
-    "pages/service/index"
+    "pages/service/index",
+    "pages/device/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
