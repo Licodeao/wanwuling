@@ -12,7 +12,8 @@
   </view>
   <view class="cardBox" style="width: 100%; height: 300rpx;">
     <van-cell-group>
-      <van-cell icon="apps-o" title="设备管理" isLink bind:tap="handleToDevicePage"/>
+      <van-cell icon="apps-o" title="设备管理" isLink link-type="navigateTo" url="/pages/device/index" />
+      <van-cell icon="clock-o" title="聊天历史" isLink link-type="navigateTo" url="/pages/chat-history/index" />
     </van-cell-group>
   </view>
 </view>
