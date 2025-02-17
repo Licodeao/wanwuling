@@ -26,7 +26,3 @@
   align-items: center;
   gap: 40rpx;
 }
-
-.container .cardBox {
-  /* background-color: yellow; */
-}

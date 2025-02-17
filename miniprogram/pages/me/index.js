@@ -10,11 +10,6 @@ Page({
       url: '/pages/login/index',
     })
   },
-  handleToDevicePage() {
-    wx.navigateTo({
-      url: '/pages/device/index',
-    })
-  },
   updateUsername() {
     const { username } = wx.getStorageSync('userInfo')
     if (username) {
