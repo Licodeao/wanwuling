@@ -1,7 +1,7 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
-// uuid
 const { v4: uuidv4 } = require('uuid')
+const jwt = require('jsonwebtoken')
 
 cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV }) // 使用当前云环境
 const db = cloud.database()
@@ -24,17 +24,15 @@ exports.main = async (event, context) => {
   let { userPhone } = event
 
   try {
-    const user = await userCollection.where({
+    const userResult = await userCollection.where({
       phone: userPhone
     }).get()
 
+    let user = null
+
     // 用户已经存在，返回用户信息
-    if (user.data.length > 0) {
-      return {
-        success: true,
-        message: '登录成功',
-        data: user.data[0]
-      }
+    if (userResult.data.length > 0) {
+      user = userResult.data[0]
     } else {
       // 用户不存在，创建新用户
       // 生成4位字符串
@@ -43,7 +41,8 @@ exports.main = async (event, context) => {
         uuid: uuidv4(),
         phone: userPhone,
         username: `小灵_${randomString}`,
-        createdAt: new Date()
+        createdAt: new Date(),
+        preference: {}
       }
 
       const addUserResult = await userCollection.add({
@@ -51,16 +50,26 @@ exports.main = async (event, context) => {
       })
 
       if (addUserResult && addUserResult.errMsg === 'collection.add:ok') {
-        return {
-          success: true,
-          message: '注册成功',
-          data: newUser,
-        }
+        user = newUser
+      }
+    }
+
+    const token = jwt.sign({
+      uuid: user.uuid,
+      phone: user.phone
+    }, 'wanwuling', { expiresIn: '7d' })
+
+    return {
+      code: 200,
+      message: userResult.data.length === 0 ? '注册成功' : '登录成功',
+      data: {
+        ...user,
+        token
       }
     }
   } catch(err) {
     return {
-      success: false,
+      code: 400,
       error: err.message
     }
   }
