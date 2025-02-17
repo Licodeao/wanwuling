@@ -1,4 +1,5 @@
-// pages/login.js
+import { userStore } from '../../store/user'
+
 Page({
 
   /**
@@ -15,7 +16,6 @@ Page({
   // 手机号登录函数
   loginByPhone(e) {
     let code = e.detail.code
-    console.log('code', code)
 
     if (!code) {
       wx.showToast({
@@ -35,7 +35,9 @@ Page({
         }
       }
     }).then(res => {
-      console.log(res)
+      wx.showLoading({
+        title: '登录中'
+      })
       if (res.result && res.result.phoneInfo) {
         let { purePhoneNumber } = res.result.phoneInfo
         wx.cloud.callFunction({
@@ -46,7 +48,9 @@ Page({
         }).then(dbRes => {
           console.log(dbRes)
           if (dbRes.result && dbRes.result.data) {
+            wx.hideLoading()
             wx.setStorageSync('userInfo', dbRes.result.data)
+            userStore.updateUserInfo(dbRes.result.data)
             wx.showToast({
               icon: 'success',
               title: dbRes.result.message,

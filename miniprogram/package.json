@@ -1,11 +1,12 @@
 {
   "dependencies": {
-    "@vant/weapp": "^1.11.7"
+    "@vant/weapp": "^1.11.7",
+    "mobx-miniprogram": "^6.12.3",
+    "mobx-miniprogram-bindings": "^5.0.0"
   },
   "name": "miniprogram",
   "version": "1.0.0",
   "main": "app.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
