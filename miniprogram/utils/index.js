@@ -15,17 +15,17 @@ export const parseDateFn = (d) => {
 }
 
 /**
- * 将数字映射为性别字符串
- * @param {string} num - 数字
+ * 将表单值映射为性别字符串
+ * @param {string} num - 表单值
  * @returns {string} 性别字符串
  */
 export const convertNumToSex = (num) => {
   switch(num) {
-    case '1': 
+    case 'boy': 
       return '男孩'
-    case '2':
+    case 'girl':
       return '女孩'
-    case '3':
+    case 'no_gender':
       return '不透露性别'
     default:
       break
@@ -33,15 +33,15 @@ export const convertNumToSex = (num) => {
 }
 
 /**
- * 将数字映射为模式字符串
- * @param {string} m - 数字
+ * 将表单值映射为模式字符串
+ * @param {string} m - 表单值
  * @returns {string} 模式字符串
  */
 export const convertModuleToString = (m) => {
   switch(m) {
-    case '1': 
+    case 'interesting': 
       return '趣味性'
-    case '2':
+    case 'science':
       return '科普性'
     default:
       break
