@@ -8,7 +8,8 @@
     "pages/privacy/index",
     "pages/service/index",
     "pages/device/index",
-    "pages/chat-history/index"
+    "pages/chat-history/index",
+    "pages/info-collection/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

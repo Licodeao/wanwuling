@@ -16,6 +16,13 @@ App({
       });
     }
 
+    const token = wx.getStorageSync('token')
+    if (!token) {
+      wx.reLaunch({
+        url: '/pages/login/index',
+      })
+    }
+
     this.globalData = {};
   },
 });

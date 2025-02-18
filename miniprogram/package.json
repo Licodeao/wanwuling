@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@vant/area-data": "^2.0.0",
     "@vant/weapp": "^1.11.7",
     "mobx-miniprogram": "^6.12.3",
     "mobx-miniprogram-bindings": "^5.0.0"

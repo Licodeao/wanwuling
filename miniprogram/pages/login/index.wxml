@@ -1,10 +1,5 @@
 <view class="container">
-  <block wx:if="{{skeletonLoading}}">
-    <van-skeleton avatar animate avatar-size="300rpx" class="skelton"></van-skeleton>
-  </block>
-  <block wx:else>
-    <image src="{{logoImgUrl}}" style="width: 380rpx; height: 300rpx; border-radius: 50%;" class="logo" />
-  </block>
+  <image src="../../images/logo.png" style="width: 380rpx; height: 300rpx; border-radius: 50%;" class="logo" />
   <view class="words">
     <text style="font-family: fantasy;">Hello! </text>
     <text style="font-family:cursive;margin-left: 10rpx;">欢迎来到万物灵</text>

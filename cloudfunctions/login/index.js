@@ -63,8 +63,9 @@ exports.main = async (event, context) => {
       code: 200,
       message: userResult.data.length === 0 ? '注册成功' : '登录成功',
       data: {
-        ...user,
-        token
+        userInfo: user,
+        token,
+        isNewUser: userResult.data.length === 0
       }
     }
   } catch(err) {

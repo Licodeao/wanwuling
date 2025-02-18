@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "van-skeleton": "@vant/weapp/skeleton/index",
     "van-icon": "@vant/weapp/icon/index"
   },
   "navigationBarTitleText": "登录"
