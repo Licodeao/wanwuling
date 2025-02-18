@@ -7,6 +7,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/info-collection/index",
+          "pathName": "pages/info-collection/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/me/index",
           "pathName": "pages/me/index",
           "query": "",

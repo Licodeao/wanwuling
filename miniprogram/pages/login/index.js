@@ -1,17 +1,7 @@
 import { userStore } from '../../store/user'
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    logoImgUrl: '',
-    skeletonLoading: true
-  },
-
-  onLoad() {
-    this.getImageTempUrl()
   },
   // 手机号登录函数
   loginByPhone(e) {
@@ -26,6 +16,10 @@ Page({
       return
     }
 
+    wx.showLoading({
+      title: '登录中'
+    })
+    
     wx.cloud.callFunction({
       name: 'openapi',
       data: {
@@ -35,9 +29,6 @@ Page({
         }
       }
     }).then(res => {
-      wx.showLoading({
-        title: '登录中'
-      })
       if (res.result && res.result.phoneInfo) {
         let { purePhoneNumber } = res.result.phoneInfo
         wx.cloud.callFunction({
@@ -49,17 +40,25 @@ Page({
           console.log(dbRes)
           if (dbRes.result && dbRes.result.data) {
             wx.hideLoading()
-            wx.setStorageSync('userInfo', dbRes.result.data)
-            userStore.updateUserInfo(dbRes.result.data)
+            wx.setStorageSync('userInfo', dbRes.result.data.userInfo)
+            wx.setStorageSync('token', dbRes.result.data.token)
+            userStore.updateUserInfo(dbRes.result.data.userInfo)
+            userStore.updateToken(dbRes.result.data.token)
             wx.showToast({
               icon: 'success',
               title: dbRes.result.message,
               duration: 1000,
               success: function() {
                 setTimeout(() => {
-                  wx.navigateBack({
-                    delta: 1
-                  })
+                  if (dbRes.result.data.isNewUser) {
+                    wx.navigateTo({
+                      url: '/pages/info-collection/index',
+                    })
+                  } else {
+                    wx.reLaunch({
+                      url: '/pages/me/index',
+                    })
+                  }
                 }, 1300)
               }
             })
@@ -76,30 +75,6 @@ Page({
       }
     }).catch(err => {
       console.log(err)
-    })
-  },
-
-  // 获取云存储中logo的临时路径
-  getImageTempUrl() {
-    wx.cloud.getTempFileURL({
-      fileList: ['cloud://wanwuling-5gxoy7il47baaafa.7761-wanwuling-5gxoy7il47baaafa-1341042436/WechatIMG2038.jpg'],
-      success: res => {
-        const fileList = res.fileList
-        if (fileList.length > 0 && fileList[0].status === 0) {
-          const tempFileURL = fileList[0].tempFileURL
-          this.setData({
-            logoImgUrl: tempFileURL
-          })
-          this.setData({
-            skeletonLoading: false
-          })
-        } else {
-          console.error('获取临时路径失败:', fileList[0].errMsg)
-        }
-      },
-      fail: err => {
-        console.error('获取图片临时路径失败', err)
-      }
     })
   },
 
