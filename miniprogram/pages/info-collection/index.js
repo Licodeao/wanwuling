@@ -1,7 +1,6 @@
 import { areaList } from '@vant/area-data'
 import { parseDateFn, convertNumToSex, convertModuleToString } from '../../utils/index'
 
-
 Page({
   data: {
     areaList,
@@ -78,5 +77,16 @@ Page({
       displayLocation: e.detail.values[0].name
     })
     this.onAreaClose()
+  },
+  formSubmit(e) {
+    const { hobbies, mode, sex } = e.detail.value
+    const formData = {
+      birthday: this.data.displayDate,
+      sex,
+      mode,
+      area: this.data.displayLocation,
+      hobbies,
+    }
+    console.log('提交表单', formData)
   }
 })
