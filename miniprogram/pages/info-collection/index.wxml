@@ -20,11 +20,11 @@
       <van-radio name="2">科普性强，学习新知识</van-radio>
     </van-radio-group>
   </view>
-  <van-divider contentPosition="center">可选信息</van-divider>
-  <van-popup show="{{areaShow}}" position="bottom" round bind:close="onClose" lock-scroll>
-    <van-area area-list="{{ areaList }}" bind:cancel="onClose" bind:confirm="onLocationConfirm" title="选择所在城市" columns-num="{{ 1 }}" />
+  <van-divider contentPosition="center">补充信息(可不填)</van-divider>
+  <van-popup show="{{areaShow}}" position="bottom" round bind:close="onAreaClose" lock-scroll>
+    <van-area area-list="{{ areaList }}" bind:cancel="onAreaClose" bind:confirm="onAreaConfirm" title="选择所在城市" columns-num="{{ 1 }}" />
   </van-popup>
-  <van-cell title="地理位置" label="科普更多本地风土人情" bind:click="showPopup">{{ displayLocation }}</van-cell>
+  <van-cell title="地理位置" label="科普更多本地风土人情" bind:click="showAreaPopup">{{ displayLocation }}</van-cell>
   <van-cell title="兴趣爱好" />
   <view class="radioGroup">
     <van-checkbox-group value="{{ checks }}" bind:change="onCheckBoxChange">

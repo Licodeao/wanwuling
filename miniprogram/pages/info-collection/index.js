@@ -31,14 +31,22 @@ Page({
   showPopup() {
     this.setData({ 
       show: true,
-      areaShow: true 
     });
+  },
+  showAreaPopup() {
+    this.setData({
+      areaShow: true
+    })
   },
   onClose() {
     this.setData({ 
       show: false,
-      areaShow: false
     });
+  },
+  onAreaClose() {
+    this.setData({
+      areaShow: false
+    })
   },
   onDateConfirm(e) {
     this.setData({
@@ -64,11 +72,11 @@ Page({
       checks: e.detail
     })
   },
-  onLocationConfirm(e) {
+  onAreaConfirm(e) {
     console.log(e.detail.values)
     this.setData({
       displayLocation: e.detail.values[0].name
     })
-    this.onClose()
+    this.onAreaClose()
   }
 })
