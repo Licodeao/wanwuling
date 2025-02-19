@@ -9,7 +9,8 @@
     "pages/service/index",
     "pages/device/index",
     "pages/chat-history/index",
-    "pages/info-collection/index"
+    "pages/info-collection/index",
+    "pages/personal/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

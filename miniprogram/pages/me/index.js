@@ -20,5 +20,10 @@ Page({
         defaultName: userInfo.username
       })
     }
+  },
+  navigateToPersonal() {
+    wx.navigateTo({
+      url: '/pages/personal/index',
+    })
   }
 })
