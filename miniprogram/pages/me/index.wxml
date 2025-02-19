@@ -1,5 +1,5 @@
 <view class="container">
-  <view class="top" bind:tap="handleLogin">
+  <view class="top" bind:tap="navigateToPersonal">
     <view class="user">
       <view class="left">
         <image src="../../images/default-avatar.png" mode="aspectFill" style="width: 140rpx; height: 140rpx; border-radius: 50%;" />
