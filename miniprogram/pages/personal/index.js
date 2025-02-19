@@ -10,7 +10,7 @@ Page({
     sex: '',
     mode: '',
     location: '',
-    hobbies: '',
+    // hobbies: '',
     birthdayShow: false,
     currentDate: new Date().getTime(),
     formatter(type, value) {
@@ -30,8 +30,7 @@ Page({
     modeShow: false,
     modeColumns: ['趣味性','科普性'],
     locationShow: false,
-    hobbiesShow: false,
-    hobbiesColumns: ['自然科学','动物世界','中华历史','工程技术','艺术培养','运动健康']
+    checks: []
   },
   onChooseAvatar(e) {
     const { avatarUrl } = e.detail 
@@ -126,21 +125,9 @@ Page({
     })
     this.onLocationClose()
   },
-  onHobbiesClose() {
+  onCheckBoxChange(e) {
     this.setData({
-      hobbiesShow: false
+      checks: e.detail
     })
   },
-  showHobbiesPopup() {
-    this.setData({
-      hobbiesShow: true
-    })
-  },
-  onHobbiesConfirm(e) {
-    this.setData({
-      hobbies: e.detail.value
-    })
-
-    this.onHobbiesClose()
-  }
 })

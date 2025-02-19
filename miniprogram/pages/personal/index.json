@@ -5,7 +5,10 @@
     "van-picker": "@vant/weapp/picker/index",
     "van-popup": "@vant/weapp/popup/index",
     "van-datetime-picker": "@vant/weapp/datetime-picker/index",
-    "van-area": "@vant/weapp/area/index"
+    "van-area": "@vant/weapp/area/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index",
+    "van-cell": "@vant/weapp/cell/index"
   },
   "navigationBarTitleText": "完善个人信息"
 }
