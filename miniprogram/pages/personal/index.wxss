@@ -5,6 +5,24 @@
   gap: 50rpx;
 }
 
+.container .top .fields .checkGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container .top .fields .checkGroup .checkbox-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 30rpx 0rpx;
+  gap: 40rpx;
+}
+
+.container .top .fields .checkGroup .checkbox-row .van-check {
+  flex: 1;
+  text-align: center;
+}
+
 .container .btn {
   width: 100%;
   display: flex;

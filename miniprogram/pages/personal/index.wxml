@@ -22,10 +22,21 @@
           <van-area area-list="{{ areaList }}" bind:cancel="onLocationClose" bind:confirm="onLocationConfirm" title="更改所在城市" columns-num="{{ 1 }}" />
         </van-popup>
         <van-field value="{{location}}" label="位置" placeholder="请选择位置" name="location" bind:focus="showLocationPopup" />
-        <van-popup show="{{hobbiesShow}}" position="bottom" round bind:close="onHobbiesClose" lock-scroll>
-          <van-picker columns="{{hobbiesColumns}}" show-toolbar title="更改兴趣爱好" bind:cancel="onHobbiesClose" bind:confirm="onHobbiesConfirm" />
-        </van-popup>
-        <van-field value="{{hobbies}}" label="兴趣爱好" placeholder="请选择兴趣爱好" name="hobbies" bind:focus="showHobbiesPopup" right-icon="close" />
+        <van-cell title="兴趣爱好" />
+        <view class="checkGroup">
+          <van-checkbox-group value="{{ checks }}" bind:change="onCheckBoxChange">
+            <view class="checkbox-row">
+              <van-checkbox name="nature" class="van-check">自然科学</van-checkbox>
+              <van-checkbox name="animal" class="van-check">动物世界</van-checkbox>
+              <van-checkbox name="history" class="van-check">中华历史</van-checkbox>
+            </view>
+            <view class="checkbox-row">
+              <van-checkbox name="engineering" class="van-check">工程技术</van-checkbox>
+              <van-checkbox name="art" class="van-check">艺术培养</van-checkbox>
+              <van-checkbox name="sport" class="van-check">运动健康</van-checkbox>
+            </view>
+          </van-checkbox-group>
+        </view>
       </view>
     </view>
     <view class="btn">
