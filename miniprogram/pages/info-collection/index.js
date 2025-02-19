@@ -29,7 +29,6 @@ Page({
     phone: '',
   },
   onLoad(options) {
-    console.log('手机号:', options.phone)
     if (options.phone) {
       this.setData({
         phone: options.phone
@@ -89,14 +88,42 @@ Page({
   },
   formSubmit(e) {
     const { hobbies, mode, sex } = e.detail.value
+
+    if (this.data.displayDate === '点击选择生日') {
+      wx.showToast({
+        title: '请选择生日',
+        icon: 'error',
+        duration: 1500
+      })
+      return
+    }
+
+    if (!sex) {
+      wx.showToast({
+        title: '请选择性别',
+        icon: 'error',
+        duration: 1500
+      })
+      return
+    }
+
+    if (!mode) {
+      wx.showToast({
+        title: '请选择模式',
+        icon: 'error',
+        duration: 1500
+      })
+      return
+    }
+
     const formData = {
       phone: this.data.phone,
       preference: {
         birthday: this.data.displayDate,
         sex,
         mode,
-        area: this.data.displayLocation,
-        hobbies,
+        area: this.data.displayLocation === '点击选择位置' ? '' : this.data.displayLocation,
+        hobbies: hobbies || [],
       }
     }
     console.log('提交表单', formData)
