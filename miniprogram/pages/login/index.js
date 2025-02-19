@@ -52,7 +52,7 @@ Page({
                 setTimeout(() => {
                   if (dbRes.result.data.isNewUser) {
                     wx.navigateTo({
-                      url: '/pages/info-collection/index',
+                      url: `/pages/info-collection/index?phone=${purePhoneNumber}`,
                     })
                   } else {
                     wx.reLaunch({

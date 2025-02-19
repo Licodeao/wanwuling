@@ -26,6 +26,15 @@ Page({
     checks: [],
     areaShow: false,
     displayLocation: '点击选择位置',
+    phone: '',
+  },
+  onLoad(options) {
+    console.log('手机号:', options.phone)
+    if (options.phone) {
+      this.setData({
+        phone: options.phone
+      })
+    }
   },
   showPopup() {
     this.setData({ 
@@ -81,12 +90,41 @@ Page({
   formSubmit(e) {
     const { hobbies, mode, sex } = e.detail.value
     const formData = {
-      birthday: this.data.displayDate,
-      sex,
-      mode,
-      area: this.data.displayLocation,
-      hobbies,
+      phone: this.data.phone,
+      preference: {
+        birthday: this.data.displayDate,
+        sex,
+        mode,
+        area: this.data.displayLocation,
+        hobbies,
+      }
     }
     console.log('提交表单', formData)
+    wx.showLoading({
+      title: '保存中',
+    })
+    wx.cloud.callFunction({
+      name: 'addInfos',
+      data: {
+        info: formData
+      }
+    }).then(res => {
+      console.log('更新结果', res)
+      if (res.result.code === 200) {
+        wx.hideLoading()
+        wx.showToast({
+          title: res.result.message,
+          icon: 'success',
+          duration: 1000
+        })
+        setTimeout(() => {
+          wx.reLaunch({
+            url: '/pages/me/index'
+          })
+        }, 1300)
+      }
+    }).catch(err => {
+      console.log(err)
+    })
   }
 })
