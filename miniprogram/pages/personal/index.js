@@ -10,7 +10,6 @@ Page({
     sex: '',
     mode: '',
     location: '',
-    // hobbies: '',
     birthdayShow: false,
     currentDate: new Date().getTime(),
     formatter(type, value) {
@@ -33,7 +32,27 @@ Page({
     checks: []
   },
   onChooseAvatar(e) {
-    const { avatarUrl } = e.detail 
+    const { avatarUrl } = e.detail
+    if (avatarUrl) {
+      wx.cloud.uploadFile({
+        cloudPath: `avatars/${Date.now()}.png`,
+        filePath: avatarUrl,
+        success: res => {
+          const fileID = res.fileID
+          this.setData({
+            avatarUrl: fileID
+          })
+        },
+        fail: err => {
+          console.log('上传头像失败：', err)
+          wx.showToast({
+            title: '上传头像失败',
+            icon: 'error',
+            duration: 1500
+          })
+        }
+      })
+    }
     this.setData({
       avatarUrl,
     })
@@ -59,6 +78,19 @@ Page({
   },
   formSubmit(e) {
     console.log(e.detail.value)
+    const { username, birthday, sex, mode, location} = e.detail.value
+    console.log('头像', this.data.avatarUrl)
+    console.log('兴趣爱好', this.data.checks)
+    const updateFormData = {
+      avatarUrl,
+      username,
+      birthday,
+      sex,
+      mode,
+      location: location || '',
+      hobbies: this.data.checks
+    }
+    console.log(updateFormData)
   },
   onBirthdayClose() {
     this.setData({
