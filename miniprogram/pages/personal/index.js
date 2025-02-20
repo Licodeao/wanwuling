@@ -123,6 +123,9 @@ Page({
       })
     }
     console.log("更新数据: ",updateFormData)
+    wx.showLoading({
+      title: '更改中',
+    })
     try {
       const res = await wx.cloud.callFunction({
         name: 'updateInfos',
@@ -130,6 +133,7 @@ Page({
       })
       console.log('前端获取到的结果:', res)
       if (res.result.code === 200) {
+        wx.hideLoading()
         wx.showToast({
           title: '更改成功',
           icon: 'success',
