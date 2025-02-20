@@ -10,7 +10,8 @@
     "pages/device/index",
     "pages/chat-history/index",
     "pages/info-collection/index",
-    "pages/personal/index"
+    "pages/personal/index",
+    "pages/bluetooth/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
