@@ -39,6 +39,7 @@ exports.main = async (event, context) => {
       const randomString = generateRandomString(4)
       const newUser = {
         uuid: uuidv4(),
+        avatarUrl: '',
         phone: userPhone,
         username: `小灵_${randomString}`,
         createdAt: new Date(),

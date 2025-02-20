@@ -2,26 +2,26 @@
   <form catchsubmit="formSubmit">
     <view class="top">
       <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-        <image class="avatar" src="{{avatarUrl}}"></image>
+        <image class="avatar" src="{{defaultAvatar}}"></image>
       </button>
       <view class="fields">
         <van-field value="{{ username }}" label="昵称" required placeholder="请输入昵称" border="{{ true }}" bind:blur="onUsernameBlur" type="nickname" bind:nicknamereview="onUsernameReview" name="username" />
         <van-popup show="{{birthdayShow}}" position="bottom" round bind:close="onBirthdayClose" lock-scroll>
           <van-datetime-picker type="date" value="{{ currentDate }}" formatter="{{ formatter }}" show-toolbar title="更改生日" bind:confirm="onBirthdayConfirm" bind:cancel="onBirthdayClose" />
         </van-popup>
-        <van-field label="生日" value="{{birthday}}" placeholder="请选择生日" required name="birthday" bind:focus="showBirthdayPopup" />
+        <van-field label="生日" value="{{birthday}}" placeholder="请选择生日" required name="birthday" bind:tap="showBirthdayPopup" readonly  />
         <van-popup show="{{sexShow}}" position="bottom" round bind:close="onSexClose" lock-scroll>
           <van-picker columns="{{sexColumns}}" show-toolbar title="更改性别" bind:cancel="onSexClose" bind:confirm="onSexConfirm" />
         </van-popup>
-        <van-field label="性别" value="{{sex}}" placeholder="请选择性别" required name="sex" bind:focus="showSexPopup" />
+        <van-field label="性别" value="{{sex}}" placeholder="请选择性别" required name="sex" bind:tap="showSexPopup" readonly />
         <van-popup show="{{modeShow}}" position="bottom" round bind:close="onModeClose" lock-scroll>
           <van-picker columns="{{modeColumns}}" show-toolbar title="更改模式" bind:cancel="onModeClose" bind:confirm="onModeConfirm" />
         </van-popup>
-        <van-field label="模式" value="{{mode}}" placeholder="请选择模式" required name="mode" bind:focus="showModePopup" />
+        <van-field label="模式" value="{{mode}}" placeholder="请选择模式" required name="mode" bind:tap="showModePopup" readonly />
         <van-popup show="{{locationShow}}" position="bottom" round bind:close="onLocationClose" lock-scroll>
           <van-area area-list="{{ areaList }}" bind:cancel="onLocationClose" bind:confirm="onLocationConfirm" title="更改所在城市" columns-num="{{ 1 }}" />
         </van-popup>
-        <van-field value="{{location}}" label="位置" placeholder="请选择位置" name="location" bind:focus="showLocationPopup" />
+        <van-field value="{{location}}" label="位置" placeholder="请选择位置" name="location" bind:tap="showLocationPopup" readonly />
         <van-cell title="兴趣爱好" />
         <view class="checkGroup">
           <van-checkbox-group value="{{ checks }}" bind:change="onCheckBoxChange">

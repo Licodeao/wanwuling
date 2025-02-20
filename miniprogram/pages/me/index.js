@@ -4,20 +4,22 @@ import { userStore } from '../../store/user'
 Page({
   behaviors: [storeBindingsBehavior],
   data: {
-    defaultName: ""
+    defaultName: '',
+    defaultAvatar: ''
   },
   storeBindings: {
     store: userStore,
     fields: ['userInfo', 'token']
   },
   onLoad() {
-    this.updateUsername()
+    this.updateInfo()
   },
-  updateUsername() {
+  updateInfo() {
     const userInfo = this.data.userInfo
-    if (userInfo && userInfo.username) {
+    if (userInfo) {
       this.setData({
-        defaultName: userInfo.username
+        defaultName: userInfo.username,
+        defaultAvatar: userInfo.avatarUrl || '../../images/default-avatar.png'
       })
     }
   },

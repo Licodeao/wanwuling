@@ -17,9 +17,15 @@ exports.main = async (event, context) => {
         preference: info.preference
       }
     })
+
+    const updatedData = await userCollection.where({
+      phone: info.phone
+    }).get()
+
     return {
       code: 200,
-      message: '保存成功'
+      message: '保存成功',
+      data: updatedData.data[0]
     }
   } catch(err) {
     return {
