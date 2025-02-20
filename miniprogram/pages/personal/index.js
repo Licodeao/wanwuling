@@ -1,10 +1,18 @@
 import { areaList } from '@vant/area-data'
 import { parseDateFn, convertNumToSex, convertModuleToString } from '../../utils/index'
+import { storeBindingsBehavior } from 'mobx-miniprogram-bindings'
+import { userStore } from '../../store/user'
+import { toJS } from 'mobx-miniprogram'
 
 Page({
+  behaviors: [storeBindingsBehavior],
+  storeBindings: {
+    store: userStore,
+    fields: ['userInfo', 'token'],
+  },
   data: {
     areaList,
-    avatarUrl: '../../images/default-avatar.png',
+    defaultAvatar: '',
     username: '',
     birthday: '',
     sex: '',
@@ -25,11 +33,35 @@ Page({
       return value;
     },
     sexShow: false,
-    sexColumns: ['男', '女', '不透露性别'],
+    sexColumns: ['男孩', '女孩', '不透露性别'],
     modeShow: false,
     modeColumns: ['趣味性','科普性'],
     locationShow: false,
     checks: []
+  },
+  onLoad() {
+    const localUserInfo = wx.getStorageSync('userInfo')
+
+    if (localUserInfo) {
+      this.initUserInfo(localUserInfo)
+    }
+  },
+  initUserInfo(rawUserInfo) {
+    const userInfo = toJS(rawUserInfo)
+    
+    if (userInfo) {
+      const preference = toJS(userInfo.preference || {})
+
+      this.setData({
+        defaultAvatar: userInfo.avatarUrl || '../../images/default-avatar.png',
+        username: userInfo.username || '',
+        birthday: preference.birthday || '',
+        sex: convertNumToSex(preference.sex) || '',
+        mode: convertModuleToString(preference.mode) || '',
+        location: preference.area || '',
+        checks: preference.hobbies || []
+      }) 
+    }
   },
   onChooseAvatar(e) {
     const { avatarUrl } = e.detail
@@ -40,7 +72,7 @@ Page({
         success: res => {
           const fileID = res.fileID
           this.setData({
-            avatarUrl: fileID
+            defaultAvatar: fileID
           })
         },
         fail: err => {
@@ -53,9 +85,6 @@ Page({
         }
       })
     }
-    this.setData({
-      avatarUrl,
-    })
   },
   onUsernameBlur(e) {
     this.setData({
@@ -76,21 +105,54 @@ Page({
       })
     }
   },
-  formSubmit(e) {
-    console.log(e.detail.value)
+  async formSubmit(e) {
     const { username, birthday, sex, mode, location} = e.detail.value
-    console.log('头像', this.data.avatarUrl)
-    console.log('兴趣爱好', this.data.checks)
+    const { defaultAvatar, checks } = this.data
+    
     const updateFormData = {
-      avatarUrl,
+      phone: this.data.userInfo.phone,
+      // 使用本地图片做头像不上传
+      avatarUrl: defaultAvatar === '../../images/default-avatar.png' ? '' : defaultAvatar,
       username,
-      birthday,
-      sex,
-      mode,
-      location: location || '',
-      hobbies: this.data.checks
+      preference: Object.assign({}, {
+        birthday,
+        sex: convertNumToSex(sex),
+        mode: convertModuleToString(mode),
+        area: location || '',
+        hobbies: checks
+      })
     }
-    console.log(updateFormData)
+    console.log("更新数据: ",updateFormData)
+    try {
+      const res = await wx.cloud.callFunction({
+        name: 'updateInfos',
+        data: updateFormData
+      })
+      console.log('前端获取到的结果:', res)
+      if (res.result.code === 200) {
+        wx.showToast({
+          title: '更改成功',
+          icon: 'success',
+          duration: 1000
+        })
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 1
+          })
+        }, 1100)
+      } else {
+        wx.showToast({
+          title: '更改失败',
+          icon: 'error',
+          duration: 1000
+        })
+      }
+    } catch(err) {
+      wx.showToast({
+        title: '保存失败',
+        icon: 'error'
+      })
+    }
   },
   onBirthdayClose() {
     this.setData({

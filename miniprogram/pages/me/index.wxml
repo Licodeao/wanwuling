@@ -2,7 +2,7 @@
   <view class="top" bind:tap="navigateToPersonal">
     <view class="user">
       <view class="left">
-        <image src="../../images/default-avatar.png" mode="aspectFill" style="width: 140rpx; height: 140rpx; border-radius: 50%;" />
+        <image src="{{defaultAvatar}}" mode="aspectFill" style="width: 140rpx; height: 140rpx; border-radius: 50%;" />
         <view class="info">
           <view class="name">{{defaultName}}</view>
         </view>

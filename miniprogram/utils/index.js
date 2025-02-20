@@ -27,6 +27,12 @@ export const convertNumToSex = (num) => {
       return '女孩'
     case 'no_gender':
       return '不透露性别'
+    case '男孩': 
+      return 'boy'
+    case '女孩':
+      return 'girl'
+    case '不透露性别':
+      return 'no_gender'
     default:
       break
   }
@@ -43,6 +49,10 @@ export const convertModuleToString = (m) => {
       return '趣味性'
     case 'science':
       return '科普性'
+    case '趣味性': 
+      return 'interesting'
+    case '科普性':
+      return 'science'
     default:
       break
   }

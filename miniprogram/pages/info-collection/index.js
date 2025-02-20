@@ -139,6 +139,7 @@ Page({
       console.log('更新结果', res)
       if (res.result.code === 200) {
         wx.hideLoading()
+        wx.setStorageSync('userInfo', res.result.data)
         wx.showToast({
           title: res.result.message,
           icon: 'success',
