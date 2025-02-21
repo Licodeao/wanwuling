@@ -35,11 +35,11 @@ exports.main = async (event, context) => {
         preferenceData.mode = mode
       }
 
-      if (area !== undefined && area !== '') {
+      if (area !== undefined) {
         preferenceData.area = area
       }
 
-      if (Array.isArray(hobbies) && hobbies.length > 0) {
+      if (Array.isArray(hobbies)) {
         preferenceData.hobbies = hobbies
       }
 

@@ -1,4 +1,5 @@
 import { userStore } from '../../store/user'
+import { setStorage } from '../../utils/index'
 
 Page({
   data: {
@@ -40,10 +41,10 @@ Page({
           console.log(dbRes)
           if (dbRes.result && dbRes.result.data) {
             wx.hideLoading()
-            wx.setStorageSync('userInfo', dbRes.result.data.userInfo)
-            wx.setStorageSync('token', dbRes.result.data.token)
-            userStore.updateUserInfo(dbRes.result.data.userInfo)
-            userStore.updateToken(dbRes.result.data.token)
+            setStorage('userInfo', dbRes.result.data.userInfo)
+            setStorage('token', dbRes.result.data.token)
+            userStore.updateUserInfoAction(dbRes.result.data.userInfo)
+            userStore.updateTokenAction(dbRes.result.data.token)
             wx.showToast({
               icon: 'success',
               title: dbRes.result.message,

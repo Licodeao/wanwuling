@@ -1,23 +1,11 @@
 import { areaList } from '@vant/area-data'
 import { parseDateFn, convertNumToSex, convertModuleToString } from '../../utils/index'
-import { storeBindingsBehavior } from 'mobx-miniprogram-bindings'
+import { createStoreBindings } from 'mobx-miniprogram-bindings'
 import { userStore } from '../../store/user'
-import { toJS } from 'mobx-miniprogram'
 
 Page({
-  behaviors: [storeBindingsBehavior],
-  storeBindings: {
-    store: userStore,
-    fields: ['userInfo', 'token'],
-  },
   data: {
     areaList,
-    defaultAvatar: '',
-    username: '',
-    birthday: '',
-    sex: '',
-    mode: '',
-    location: '',
     birthdayShow: false,
     currentDate: new Date().getTime(),
     formatter(type, value) {
@@ -37,31 +25,21 @@ Page({
     modeShow: false,
     modeColumns: ['趣味性','科普性'],
     locationShow: false,
-    checks: []
   },
   onLoad() {
-    const localUserInfo = wx.getStorageSync('userInfo')
-
-    if (localUserInfo) {
-      this.initUserInfo(localUserInfo)
-    }
+    this.storeBindings = createStoreBindings(this, {
+      store: userStore,
+      fields: ['userInfo'],
+      actions: [
+        'updateUserAvatarUrlAction', 'updateUsernameAction', 'updateUserBirthdayAction', 'updateUserSexualAction',
+        'updateUserModeAction',
+        'updateUserAreaAction',
+        'updateUserHobbiesAction'
+      ]
+    })
   },
-  initUserInfo(rawUserInfo) {
-    const userInfo = toJS(rawUserInfo)
-    
-    if (userInfo) {
-      const preference = toJS(userInfo.preference || {})
-
-      this.setData({
-        defaultAvatar: userInfo.avatarUrl || '../../images/default-avatar.png',
-        username: userInfo.username || '',
-        birthday: preference.birthday || '',
-        sex: convertNumToSex(preference.sex) || '',
-        mode: convertModuleToString(preference.mode) || '',
-        location: preference.area || '',
-        checks: preference.hobbies || []
-      }) 
-    }
+  onUnload() {
+    this.storeBindings.destroyStoreBindings()
   },
   onChooseAvatar(e) {
     const { avatarUrl } = e.detail
@@ -71,12 +49,10 @@ Page({
         filePath: avatarUrl,
         success: res => {
           const fileID = res.fileID
-          this.setData({
-            defaultAvatar: fileID
-          })
+          this.updateUserAvatarUrlAction(fileID)
         },
         fail: err => {
-          console.log('上传头像失败：', err)
+          console.error('上传头像失败：', err)
           wx.showToast({
             title: '上传头像失败',
             icon: 'error',
@@ -86,10 +62,8 @@ Page({
       })
     }
   },
-  onUsernameBlur(e) {
-    this.setData({
-      username: e.detail.value
-    })
+  onUsernameChange(e) {
+    this.updateUsernameAction(e.detail)
   },
   onUsernameReview(e) {
     const { pass } = e.detail
@@ -100,27 +74,83 @@ Page({
         icon: 'error',
         duration: 1500
       })
-      this.setData({
-        username: ''
-      })
+      this.updateUsernameAction('')
     }
   },
+  onBirthdayClose() {
+    this.setData({
+      birthdayShow: false
+    })
+  },
+  showBirthdayPopup() {
+    this.setData({
+      birthdayShow: true
+    })
+  },
+  onBirthdayConfirm(e) {
+    const d = parseDateFn(e.detail)
+    this.updateUserBirthdayAction(d)
+    this.onBirthdayClose()
+  },
+  onSexClose() {
+    this.setData({
+      sexShow: false
+    })
+  },
+  showSexPopup() {
+    this.setData({
+      sexShow: true
+    })
+  },
+  onSexConfirm(e) {
+    this.updateUserSexualAction(e.detail.value)
+    this.onSexClose()
+  },
+  onModeClose() {
+    this.setData({
+      modeShow: false
+    })
+  },
+  showModePopup() {
+    this.setData({
+      modeShow: true
+    })
+  },
+  onModeConfirm(e) {
+    this.updateUserModeAction(e.detail.value)
+    this.onModeClose()
+  },
+  onLocationClose() {
+    this.setData({
+      locationShow: false
+    })
+  },
+  showLocationPopup() {
+    this.setData({
+      locationShow: true
+    })
+  },
+  onLocationConfirm(e) {
+    this.updateUserAreaAction(e.detail.values[0].name)
+    this.onLocationClose()
+  },
+  onCheckBoxChange(e) {
+    this.updateUserHobbiesAction(e.detail)
+  },
   async formSubmit(e) {
-    const { username, birthday, sex, mode, location} = e.detail.value
-    const { defaultAvatar, checks } = this.data
+    const { username, birthday, sex, mode, area, hobbies } = e.detail.value
     
     const updateFormData = {
       phone: this.data.userInfo.phone,
-      // 使用本地图片做头像不上传
-      avatarUrl: defaultAvatar === '../../images/default-avatar.png' ? '' : defaultAvatar,
+      avatarUrl: this.data.userInfo.avatarUrl,
       username,
-      preference: Object.assign({}, {
+      preference: {
         birthday,
-        sex: convertNumToSex(sex),
-        mode: convertModuleToString(mode),
-        area: location || '',
-        hobbies: checks
-      })
+        sex,
+        mode,
+        area,
+        hobbies
+      }
     }
     console.log("更新数据: ",updateFormData)
     wx.showLoading({
@@ -157,75 +187,5 @@ Page({
         icon: 'error'
       })
     }
-  },
-  onBirthdayClose() {
-    this.setData({
-      birthdayShow: false
-    })
-  },
-  showBirthdayPopup() {
-    this.setData({
-      birthdayShow: true
-    })
-  },
-  onBirthdayConfirm(e) {
-    const d = parseDateFn(e.detail)
-    this.setData({
-      birthday: d
-    })
-    this.onBirthdayClose()
-  },
-  onSexClose() {
-    this.setData({
-      sexShow: false
-    })
-  },
-  showSexPopup() {
-    this.setData({
-      sexShow: true
-    })
-  },
-  onSexConfirm(e) {
-    this.setData({
-      sex: e.detail.value
-    })
-    this.onSexClose()
-  },
-  onModeClose() {
-    this.setData({
-      modeShow: false
-    })
-  },
-  showModePopup() {
-    this.setData({
-      modeShow: true
-    })
-  },
-  onModeConfirm(e) {
-    this.setData({
-      mode: e.detail.value
-    })
-    this.onModeClose()
-  },
-  onLocationClose() {
-    this.setData({
-      locationShow: false
-    })
-  },
-  showLocationPopup() {
-    this.setData({
-      locationShow: true
-    })
-  },
-  onLocationConfirm(e) {
-    this.setData({
-      location: e.detail.values[0].name
-    })
-    this.onLocationClose()
-  },
-  onCheckBoxChange(e) {
-    this.setData({
-      checks: e.detail
-    })
   },
 })

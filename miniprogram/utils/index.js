@@ -27,12 +27,6 @@ export const convertNumToSex = (num) => {
       return '女孩'
     case 'no_gender':
       return '不透露性别'
-    case '男孩': 
-      return 'boy'
-    case '女孩':
-      return 'girl'
-    case '不透露性别':
-      return 'no_gender'
     default:
       break
   }
@@ -49,11 +43,59 @@ export const convertModuleToString = (m) => {
       return '趣味性'
     case 'science':
       return '科普性'
-    case '趣味性': 
-      return 'interesting'
-    case '科普性':
-      return 'science'
     default:
       break
+  }
+}
+
+/**
+ * @description 本地存储数据
+ * @param {*} key 本地缓存中指定的 key
+ * @param {*} value 需要缓存的数据
+ */
+export const setStorage = (key, value) => {
+  try {
+    wx.setStorageSync(key, value)
+  } catch(e) {
+    console.error(`存储指定的 ${key} 数据发生错误:`, e)
+  }
+}
+
+/**
+ * @description 从本地读取对应 key 的数据
+ * @param {*} key
+ */
+export const getStorage = (key) => {
+  try {
+    const value = wx.getStorageSync(key)
+
+    if (value) {
+      return value
+    }
+  } catch(e) {
+    console.error(`获取指定的 ${key} 数据发生错误:`, e)
+  }
+}
+
+/**
+ * @description 从本地移除指定 key 的数据
+ * @param {*} key
+ */
+export const removeStorage = (key) => {
+  try {
+    wx.removeStorageSync(key)
+  } catch(e) {
+    console.error(`移除指定的 ${key} 数据发生错误:`, e)
+  }
+}
+
+/**
+ * @description 从本地清空全部的数据
+ */
+export const clearStorage = () => {
+  try {
+    wx.clearStorageSync()
+  } catch(e) {
+    console.error(`清空本地存储数据时发生错误:`, e)
   }
 }

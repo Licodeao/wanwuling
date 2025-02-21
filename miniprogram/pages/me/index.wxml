@@ -2,9 +2,9 @@
   <view class="top" bind:tap="navigateToPersonal">
     <view class="user">
       <view class="left">
-        <image src="{{defaultAvatar}}" mode="aspectFill" style="width: 140rpx; height: 140rpx; border-radius: 50%;" />
+        <image src="{{ token && userInfo.avatarUrl ? userInfo.avatarUrl : '../../images/default-avatar.png' }}" mode="aspectFill" style="width: 140rpx; height: 140rpx; border-radius: 50%;" />
         <view class="info">
-          <view class="name">{{defaultName}}</view>
+          <view class="name">{{ token ? userInfo.username : '立即登录' }}</view>
         </view>
       </view>
       <van-icon name="arrow" />

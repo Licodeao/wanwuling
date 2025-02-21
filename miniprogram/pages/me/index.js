@@ -1,31 +1,27 @@
-import { storeBindingsBehavior } from 'mobx-miniprogram-bindings'
+import { createStoreBindings } from 'mobx-miniprogram-bindings'
 import { userStore } from '../../store/user'
 
 Page({
-  behaviors: [storeBindingsBehavior],
   data: {
-    defaultName: '',
-    defaultAvatar: ''
-  },
-  storeBindings: {
-    store: userStore,
-    fields: ['userInfo', 'token']
   },
   onLoad() {
-    this.updateInfo()
+    this.storeBindings = createStoreBindings(this, {
+      store: userStore,
+      fields: ['userInfo', 'token']
+    })
   },
-  updateInfo() {
-    const userInfo = this.data.userInfo
-    if (userInfo) {
-      this.setData({
-        defaultName: userInfo.username,
-        defaultAvatar: userInfo.avatarUrl || '../../images/default-avatar.png'
-      })
-    }
+  onUnload() {
+    this.storeBindings.destroyStoreBindings()
   },
   navigateToPersonal() {
-    wx.navigateTo({
-      url: '/pages/personal/index',
-    })
+    if (!this.data.token) {
+      wx.navigateTo({
+        url: '/pages/login/index',
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/personal/index',
+      })
+    }
   }
 })
