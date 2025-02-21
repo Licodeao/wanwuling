@@ -1,5 +1,7 @@
 import { areaList } from '@vant/area-data'
 import { parseDateFn, convertNumToSex, convertModuleToString } from '../../utils/index'
+import { setStorage } from '../../utils/index'
+import { userStore } from '../../store/user'
 
 Page({
   data: {
@@ -120,8 +122,8 @@ Page({
       phone: this.data.phone,
       preference: {
         birthday: this.data.displayDate,
-        sex,
-        mode,
+        sex: convertNumToSex(sex),
+        mode: convertModuleToString(mode),
         area: this.data.displayLocation === '点击选择位置' ? '' : this.data.displayLocation,
         hobbies: hobbies || [],
       }
@@ -139,7 +141,8 @@ Page({
       console.log('更新结果', res)
       if (res.result.code === 200) {
         wx.hideLoading()
-        wx.setStorageSync('userInfo', res.result.data)
+        setStorage('userInfo', res.result.data)
+        userStore.updateUserInfoAction(res.result.data)
         wx.showToast({
           title: res.result.message,
           icon: 'success',

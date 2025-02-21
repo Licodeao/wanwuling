@@ -1,4 +1,4 @@
-// app.js
+// import { getStorage } from './utils/index'
 const cloudID = require('envList')
 
 App({
@@ -16,12 +16,12 @@ App({
       });
     }
 
-    const token = wx.getStorageSync('token')
-    if (!token) {
-      wx.reLaunch({
-        url: '/pages/login/index',
-      })
-    }
+    // const token = getStorage('token')
+    // if (!token) {
+    //   wx.reLaunch({
+    //     url: '/pages/login/index',
+    //   })
+    // }
 
     this.globalData = {};
   },
