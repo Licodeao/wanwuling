@@ -1,7 +1,7 @@
 import { areaList } from '@vant/area-data'
-import { parseDateFn, convertNumToSex, convertModuleToString } from '../../utils/index'
+import { parseDateFn } from '../../../utils/index'
 import { createStoreBindings } from 'mobx-miniprogram-bindings'
-import { userStore } from '../../store/user'
+import { userStore } from '../../../store/user'
 
 Page({
   data: {

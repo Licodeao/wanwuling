@@ -1,7 +1,7 @@
 import { areaList } from '@vant/area-data'
-import { parseDateFn, convertNumToSex, convertModuleToString } from '../../utils/index'
-import { setStorage } from '../../utils/index'
-import { userStore } from '../../store/user'
+import { parseDateFn, convertNumToSex, convertModuleToString } from '../../../utils/index'
+import { setStorage } from '../../../utils/index'
+import { userStore } from '../../../store/user'
 
 Page({
   data: {

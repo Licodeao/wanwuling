@@ -1,5 +1,5 @@
 <view class="container">
-  <image src="../../images/logo.png" style="width: 380rpx; height: 300rpx; border-radius: 50%;" class="logo" />
+  <image src="/packageUser/images/logo.png" style="width: 380rpx; height: 300rpx; border-radius: 50%;" class="logo" />
   <view class="words">
     <text style="font-family: fantasy;">Hello! </text>
     <text style="font-family:cursive;margin-left: 10rpx;">欢迎来到万物灵</text>

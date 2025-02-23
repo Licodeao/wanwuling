@@ -2,7 +2,7 @@
   <form catchsubmit="formSubmit">
     <view class="top">
       <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-        <image class="avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}"></image>
+        <image class="avatar" src="{{userInfo.avatarUrl || '/packageUser/images/default-avatar.png'}}"></image>
       </button>
       <view class="fields">
         <van-field value="{{ userInfo.username || '' }}" label="昵称" required placeholder="请输入昵称" border="{{ true }}" bind:change="onUsernameChange" type="nickname" bind:nicknamereview="onUsernameReview" name="username" />
@@ -21,8 +21,8 @@
         <van-popup show="{{locationShow}}" position="bottom" round bind:close="onLocationClose" lock-scroll>
           <van-area area-list="{{ areaList }}" bind:cancel="onLocationClose" bind:confirm="onLocationConfirm" title="更改所在城市" columns-num="{{ 1 }}" />
         </van-popup>
-        <van-field value="{{userInfo.preference.area || ''}}" label="位置" placeholder="请选择位置" name="area" bind:tap="showLocationPopup" readonly />
-        <van-cell title="兴趣爱好" />
+        <van-field value="{{userInfo.preference.area || ''}}" label="位置" placeholder="请选择位置(可不填)" name="area" bind:tap="showLocationPopup" readonly />
+        <van-cell title="兴趣爱好(可不填)" />
         <view class="checkGroup">
           <van-checkbox-group value="{{ userInfo.preference.hobbies || [] }}" bind:change="onCheckBoxChange" name="hobbies">
             <view class="checkbox-row">

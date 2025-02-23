@@ -2,7 +2,7 @@
   <view class="top" bind:tap="navigateToPersonal">
     <view class="user">
       <view class="left">
-        <image src="{{ token && userInfo.avatarUrl ? userInfo.avatarUrl : '../../images/default-avatar.png' }}" mode="aspectFill" style="width: 140rpx; height: 140rpx; border-radius: 50%;" />
+        <image src="{{ token && userInfo.avatarUrl ? userInfo.avatarUrl : '/packageUser/images/default-avatar.png' }}" mode="aspectFill" style="width: 140rpx; height: 140rpx; border-radius: 50%;" />
         <view class="info">
           <view class="name">{{ token ? userInfo.username : '立即登录' }}</view>
         </view>
@@ -12,9 +12,9 @@
   </view>
   <view class="cardBox" style="width: 100%; height: 300rpx;">
     <van-cell-group>
-      <van-cell icon="apps-o" title="设备管理" isLink link-type="navigateTo" url="/pages/device/index" />
-      <van-cell icon="clock-o" title="聊天历史" isLink link-type="navigateTo" url="/pages/chat-history/index" />
-      <van-cell icon="cluster-o" title="蓝牙配网" isLink link-type="navigateTo" url="/pages/bluetooth/index"/>
+      <van-cell icon="apps-o" title="设备管理" isLink link-type="navigateTo" url="/packageDevice/pages/device" />
+      <van-cell icon="clock-o" title="聊天历史" isLink link-type="navigateTo" url="/packageDevice/pages/chat-history" />
+      <van-cell icon="cluster-o" title="蓝牙配网" isLink link-type="navigateTo" url="/packageDevice/pages/bluetooth"/>
     </van-cell-group>
   </view>
 </view>
