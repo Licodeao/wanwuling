@@ -16,11 +16,11 @@ Page({
   navigateToPersonal() {
     if (!this.data.token) {
       wx.navigateTo({
-        url: '/pages/login/index',
+        url: '../../packageUser/pages/login/index',
       })
     } else {
       wx.navigateTo({
-        url: '/pages/personal/index',
+        url: '../../packageUser/pages/personal/index',
       })
     }
   }

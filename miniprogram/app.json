@@ -3,16 +3,38 @@
     "pages/index/index",
     "pages/me/index",
     "pages/interact/index",
-    "pages/content/index",
-    "pages/login/index",
-    "pages/privacy/index",
-    "pages/service/index",
-    "pages/device/index",
-    "pages/chat-history/index",
-    "pages/info-collection/index",
-    "pages/personal/index",
-    "pages/bluetooth/index"
+    "pages/content/index"
   ],
+  "subPackages": [
+    {
+      "root": "packageUser",
+      "pages": [
+        "pages/login/index",
+        "pages/info-collection/index",
+        "pages/personal/index",
+        "pages/privacy/index",
+        "pages/service/index"
+      ]
+    },
+    {
+      "root": "packageDevice",
+      "pages": [
+        "pages/device/index",
+        "pages/chat-history/index",
+        "pages/bluetooth/index"
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/me/index": {
+      "network": "all",
+      "packages": ["packageUser"]
+    },
+    "pages/interact/index": {
+      "network": "all",
+      "packages": ["packageDevice"]
+    }
+  },
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",

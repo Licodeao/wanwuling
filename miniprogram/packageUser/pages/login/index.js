@@ -1,5 +1,5 @@
-import { userStore } from '../../store/user'
-import { setStorage } from '../../utils/index'
+import { userStore } from '../../../store/user'
+import { setStorage } from '../../../utils/index'
 
 Page({
   data: {
@@ -53,11 +53,11 @@ Page({
                 setTimeout(() => {
                   if (dbRes.result.data.isNewUser) {
                     wx.navigateTo({
-                      url: `/pages/info-collection/index?phone=${purePhoneNumber}`,
+                      url: `../info-collection/index?phone=${purePhoneNumber}`,
                     })
                   } else {
                     wx.reLaunch({
-                      url: '/pages/me/index',
+                      url: '../../../pages/me/index',
                     })
                   }
                 }, 1300)
@@ -85,12 +85,12 @@ Page({
     switch(type) {
       case 'privacy':
         wx.navigateTo({
-          url: '/pages/privacy/index',
+          url: '/miniprogram/packageUser/pages/privacy/index',
         })
       break;
       case 'service':
         wx.navigateTo({
-          url: '/pages/service/index',
+          url: '/miniprogram/packageUser/pages/service/index',
         })
       break;
       default:
