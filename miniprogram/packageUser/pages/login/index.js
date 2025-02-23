@@ -3,6 +3,7 @@ import { setStorage } from '../../../utils/index'
 
 Page({
   data: {
+    isAgree: ''
   },
   // 手机号登录函数
   loginByPhone(e) {
@@ -16,6 +17,10 @@ Page({
       })
       return
     }
+
+    this.setData({
+      isAgree: '1'
+    })
 
     wx.showLoading({
       title: '登录中'
@@ -96,5 +101,11 @@ Page({
       default:
         break;
     }
+  },
+
+  handleRadioChange(e) {
+    this.setData({
+      isAgree: e.detail
+    })
   }
 })

@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "van-icon": "@vant/weapp/icon/index"
+    "van-radio": "@vant/weapp/radio/index"
   },
-  "navigationBarTitleText": "登录"
+  "navigationBarTitleText": "登录",
+  "navigationBarBackgroundColor": "#88C6F9"
 }
