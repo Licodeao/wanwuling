@@ -1,17 +1,14 @@
 <view class="container">
-  <image src="/packageUser/images/logo.png" style="width: 380rpx; height: 300rpx; border-radius: 50%;" class="logo" />
-  <view class="words">
-    <text style="font-family: fantasy;">Hello! </text>
-    <text style="font-family:cursive;margin-left: 10rpx;">欢迎来到万物灵</text>
-  </view>
-  <button class="login-btn" open-type="getPhoneNumber" bindgetphonenumber="loginByPhone">
+  <image class="bg-image" src="/packageUser/images/bg.webp" mode="aspectFill" />
+  <image src="/packageUser/images/logo.webp" style="width: 640rpx; height: 200rpx;" class="logo" />
+  <image class="words" src="/packageUser/images/ling.webp" mode="aspectFill"/>
+  <button class="login-btn" open-type="getPhoneNumber" bindgetphonenumber="loginByPhone" style="background-color: #1665E0; margin-top: 125rpx; box-shadow: 0 15rpx 24rpx 0rpx #94E0FD">
     <view class="btn-wrapper">
-      <van-icon name="phone-o" size="40rpx" />
-      <text style="font-weight: 400; font-size: 30rpx;">手机号快捷登录</text>
+      <text style="font-weight: 400; font-size: 32rpx; letter-spacing: 6rpx;">本机号码一键登录</text>
     </view>
   </button>
   <view class="tips">
-    <van-icon name="info-o" />
-    <text style="font-size: 20rpx;">登录/注册即视为你同意<text style="color: #479bfc;" bind:tap="navigateToProtocol" data-type="service">《服务条款》</text>和<text style="color: #479bfc;" bind:tap="navigateToProtocol" data-type="privacy">《万物灵隐私协议》</text></text>
+    <van-radio icon-size="30rpx" value="{{isAgree}}" bind:change="handleRadioChange" name="1" />
+    <text style="font-size: 24rpx;">我已阅读并同意<text style="color: #30BAF4;" bind:tap="navigateToProtocol" data-type="service">《用户协议》</text><text style="color: #30BAF4;" bind:tap="navigateToProtocol" data-type="privacy">《隐私政策》</text><text style="color: #30BAF4;">《中国移动认证服务条款》</text></text>
   </view>
 </view>

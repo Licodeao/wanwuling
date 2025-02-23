@@ -7,22 +7,8 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/info-collection/index",
-          "pathName": "pages/info-collection/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "pages/me/index",
-          "pathName": "pages/me/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "pages/login/index",
-          "pathName": "pages/login/index",
+          "name": "packageUser/pages/login/index",
+          "pathName": "packageUser/pages/login/index",
           "query": "",
           "launchMode": "default",
           "scene": null
