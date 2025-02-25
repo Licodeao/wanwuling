@@ -3,7 +3,9 @@
     "pages/index/index",
     "pages/me/index",
     "pages/interact/index",
-    "pages/content/index"
+    "pages/content/index",
+    "pages/device/device",
+    "pages/search/search"
   ],
   "subPackages": [
     {

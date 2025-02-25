@@ -14,7 +14,7 @@
     <van-cell-group>
       <van-cell icon="apps-o" title="设备管理" isLink link-type="navigateTo" url="/packageDevice/pages/device" />
       <van-cell icon="clock-o" title="聊天历史" isLink link-type="navigateTo" url="/packageDevice/pages/chat-history" />
-      <van-cell icon="cluster-o" title="蓝牙配网" isLink link-type="navigateTo" url="/packageDevice/pages/bluetooth"/>
+      <van-cell icon="cluster-o" title="蓝牙配网" isLink link-type="navigateTo" url="/pages/search/search"/>
     </van-cell-group>
   </view>
 </view>
