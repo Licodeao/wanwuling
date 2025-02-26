@@ -1,0 +1,11 @@
+.t-container {
+  width: 100%;
+  text-align: center;
+}
+
+.protocol {
+  width: 100%;
+  font-family: 'SmileySans';
+  font-weight: 300;
+  font-size: 24rpx;
+}

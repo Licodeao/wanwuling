@@ -41,9 +41,10 @@ exports.main = async (event, context) => {
         uuid: uuidv4(),
         avatarUrl: '',
         phone: userPhone,
-        username: `小灵_${randomString}`,
+        username: `可爱小灵_${randomString}`,
         createdAt: new Date(),
-        preference: {}
+        preference: {},
+        knowledge: {}
       }
 
       const addUserResult = await userCollection.add({

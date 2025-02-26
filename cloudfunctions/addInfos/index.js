@@ -14,7 +14,10 @@ exports.main = async (event, context) => {
       phone: info.phone
     }).update({
       data: {
-        preference: info.preference
+        avatarUrl: info.avatarUrl,
+        username: info.username,
+        preference: info.preference,
+        knowledge: info.knowledge
       }
     })
 

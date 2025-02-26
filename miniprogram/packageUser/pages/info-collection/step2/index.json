@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-popup": "@vant/weapp/popup/index",
+    "van-area": "@vant/weapp/area/index",
+    "van-field": "@vant/weapp/field/index",
+    "infoTips": "../../../components/infoTips/index"
+  },
+  "navigationBarTitleText": "信息收集",
+  "navigationBarBackgroundColor": "#fff"
+}

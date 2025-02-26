@@ -44,8 +44,6 @@
 
 .container .tips {
   position: absolute;
-  /* color: #666; */
-  /* width: 700rpx; */
   width: 87%;
   height: 60rpx;
   display: flex;
@@ -55,6 +53,4 @@
   left: 50rpx;
   right: 40rpx;
   bottom: 108rpx;
-  /* background-color: red; */
-  /* text-align: center; */
 }

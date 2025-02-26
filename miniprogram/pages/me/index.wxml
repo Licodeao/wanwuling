@@ -1,20 +1,48 @@
 <view class="container">
-  <view class="top" bind:tap="navigateToPersonal">
-    <view class="user">
+  <image src="../../images/welcome.webp" class="bg" />
+  <view class="top">
+    <view class="user" bind:tap="navigateToPersonal">
       <view class="left">
-        <image src="{{ token && userInfo.avatarUrl ? userInfo.avatarUrl : '/packageUser/images/default-avatar.png' }}" mode="aspectFill" style="width: 140rpx; height: 140rpx; border-radius: 50%;" />
+        <image src="{{ token && userInfo.avatarUrl ? userInfo.avatarUrl : '../../packageUser/images/default-avatar.webp' }}" mode="aspectFill" style="width: 160rpx; height: 160rpx; border-radius: 50%;" />
         <view class="info">
           <view class="name">{{ token ? userInfo.username : '立即登录' }}</view>
+          <view class="desc">查看或编辑个人资料 ></view>
         </view>
       </view>
-      <van-icon name="arrow" />
     </view>
   </view>
-  <view class="cardBox" style="width: 100%; height: 300rpx;">
-    <van-cell-group>
-      <van-cell icon="apps-o" title="设备管理" isLink link-type="navigateTo" url="/packageDevice/pages/device" />
-      <van-cell icon="clock-o" title="聊天历史" isLink link-type="navigateTo" url="/packageDevice/pages/chat-history" />
-      <van-cell icon="cluster-o" title="蓝牙配网" isLink link-type="navigateTo" url="/packageDevice/pages/bluetooth"/>
-    </van-cell-group>
+  <view class="cardBox" style="width: 100%; height: 370rpx;">
+    <view class="tops">
+      <view class="device">
+        <image src="../../images/device.webp" class="card" />
+        <view class="info">
+          <view class="title">设备管理</view>
+          <view class="connect">已连接 <text style="font-size: 50rpx;">{{1}}</text> 位伙伴 ></view>
+        </view>
+      </view>
+      <view class="security device">
+        <image src="../../images/security.webp" class="card" />
+        <view class="info">
+          <view class="title">安全管理</view>
+          <view class="connect" style="margin-top: 5rpx;">管理敏感内容屏蔽 ></view>
+        </view>
+      </view>
+    </view>
+    <view class="bottom">
+      <view class="history">
+        <view class="info">
+          <view class="title">聊天历史</view>
+          <view style="font-weight: bold;">目前孩子未主动谈及敏感内容 查看聊天详情 ></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="cells">
+    <info-cell title="能力成长报告" />
+    <info-cell title="互动成就徽章" />
+    <info-cell title="常见问题解答" />
+    <info-cell title="联系客服反馈故障" />
+    <info-cell title="产品优化建议" />
+    <info-cell title="与我们合作" />
   </view>
 </view>

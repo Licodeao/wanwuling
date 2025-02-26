@@ -25,7 +25,7 @@ export const convertNumToSex = (num) => {
       return '男孩'
     case 'girl':
       return '女孩'
-    case 'no_gender':
+    case 'unknown':
       return '不透露性别'
     default:
       break

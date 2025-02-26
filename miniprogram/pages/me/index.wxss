@@ -1,15 +1,28 @@
 .container {
+  position: relative;
   height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  margin: 20rpx;
-  gap: 20rpx;
+  margin: 40rpx;
+  font-family: "SmileySans";
+}
+
+.container .bg {
+  width: 460rpx !important;
+  height: 200rpx !important;
+  position: absolute;
+  top: -35rpx;
+  right: -100rpx;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 .container .top {
   width: 100%;
+  height: 345rpx;
 }
 
 .container .top .user {
@@ -17,6 +30,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-top: 120rpx;
 }
 
 .container .top .user .left{
@@ -27,7 +41,94 @@
   gap: 40rpx;
 }
 
+.container .top .user .left .info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.container .top .user .left .info .name {
+  width: 100%;
+  font-size: 45rpx;
+  font-weight: bold;
+}
+
+.container .top .user .left .info .desc {
+  color: #847F7F;
+  font-size: 30rpx;
+}
+
 .container .cardBox .van-cell {
   padding-left: 0rpx !important;
   padding-right: 0rpx !important;
+}
+
+.container .cardBox .tops {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.device {
+  position: relative;
+  width: 400rpx;
+  height: 100rpx;
+  padding: 20rpx;
+  /* background-color: blue; */
+}
+
+.card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 330rpx;
+  height: 150rpx;
+  z-index: -1;
+}
+
+.device .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20rpx;
+}
+
+.device .info .title {
+  font-size: 28rpx;
+  color: #899497;
+}
+
+.device .info .connect {
+  font-weight: bold;
+  margin-top: -20rpx;
+}
+
+.bottom .history {
+  width: 100%;
+  height: 150rpx;
+  background-color: #E5FCEF;
+  border-radius: 20rpx;
+  margin-top: 30rpx;
+}
+
+.bottom .history .info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 25rpx;
+  padding: 20rpx;
+}
+
+.bottom .history .title {
+  font-size: 28rpx;
+  color: #899497;
+}
+
+.container .cells {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40rpx;
 }
