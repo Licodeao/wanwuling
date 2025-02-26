@@ -13,7 +13,7 @@
   </view>
   <view class="cardBox" style="width: 100%; height: 370rpx;">
     <view class="tops">
-      <view class="device">
+      <view class="device" bind:tap="navigateToBluetooth">
         <image src="../../images/device.webp" class="card" />
         <view class="info">
           <view class="title">设备管理</view>
