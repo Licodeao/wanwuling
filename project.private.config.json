@@ -7,6 +7,34 @@
     "miniprogram": {
       "list": [
         {
+          "name": "step1",
+          "pathName": "packageUser/pages/info-collection/step1/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "step3",
+          "pathName": "packageUser/pages/info-collection/step3/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "step4",
+          "pathName": "packageUser/pages/info-collection/step4/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "packageUser/pages/info-collection/step3/index",
+          "pathName": "packageUser/pages/info-collection/step3/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "packageUser/pages/login/index",
           "pathName": "packageUser/pages/login/index",
           "query": "",

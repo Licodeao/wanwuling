@@ -58,7 +58,7 @@ Page({
                 setTimeout(() => {
                   if (dbRes.result.data.isNewUser) {
                     wx.navigateTo({
-                      url: `../info-collection/index?phone=${purePhoneNumber}`,
+                      url: `../info-collection/step1/index`,
                     })
                   } else {
                     wx.reLaunch({

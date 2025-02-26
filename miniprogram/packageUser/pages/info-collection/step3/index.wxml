@@ -1,0 +1,60 @@
+<view class="container">
+  <image src="../../../images/step3-bg.webp" mode="aspectFill" class="bg" />
+  <view class="content">
+    <image src="../../../images/step3-title.webp" mode="aspectFit" class="title" />
+    <view class="words">
+      <text style="font-family: 'SmileySans'; font-weight: 300; font-size: 30rpx;">感谢您的信任与配合</text>
+    </view>
+    <view class="info">
+      <view class="science">
+        <view class="top">
+          <van-checkbox value="{{scienceAll}}" bind:change="onScienceAllChange" />
+          <image src="../../../images/step3-topText.webp" style="width: 300rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
+        </view>
+        <view class="aim">
+          <view style="color: #C9C6C6; font-size: 28rpx; margin-top: -10rpx;">
+            <text>避免过于血腥、暴力或超出儿童认知的科学内容</text>
+          </view>
+          <van-divider borderColor="#0863DC" custom-style="margin-top: 16rpx;" />
+        </view>
+        <view class="subjects">
+          <view class="opt" wx:for="{{scienceChecks}}" wx:key="id">
+            <van-checkbox value="{{item.checked}}" bind:change="onScienceItemChange" data-index="{{index}}" icon-size="26rpx" />
+            <view style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 15rpx;">
+              <text style="font-weight: 500; font-size: 30rpx;">{{item.title}}</text>
+              <text style="font-size: 26rpx; color: #8FAADC;font-weight: 500;">{{item.desc}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="language">
+        <view class="top">
+          <van-checkbox value="{{languageAll}}" bind:change="onLanguageAllChange" />
+          <image src="../../../images/step3-secondText.webp" style="width: 220rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
+        </view>
+        <view class="aim">
+          <view style="color: #C9C6C6; font-size: 28rpx; margin-top: -10rpx;">
+            <text>过滤不适合儿童的词汇和表达方式</text>
+          </view>
+          <van-divider borderColor="#0863DC" custom-style="margin-top: 16rpx;" />
+        </view>
+        <view class="subjects">
+          <view class="opt" wx:for="{{languageChecks}}" wx:key="id">
+            <van-checkbox value="{{item.checked}}" bind:change="onLanguageItemChange" data-index="{{index}}" icon-size="26rpx" />
+            <view style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 15rpx;">
+              <text style="font-weight: 500; font-size: 30rpx;">{{item.title}}</text>
+              <text style="font-size: 26rpx; color: #8FAADC;font-weight: 500;">{{item.desc}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-top: 70rpx;">
+      <image src="../../../images/arrow-before.webp" style="width: 170rpx; height: 50rpx;" bind:tap="navigateBackToPrevious" />
+      <image src="../../../images/arrow-next.webp" style="width: 170rpx; height: 50rpx;" bind:tap="navigateToNextPage" />
+    </view>
+    <view style="width: 100%; display: flex; justify-content: center; align-items: center; margin-top: 30rpx;">
+      <infoTips />
+    </view>
+  </view>
+</view>

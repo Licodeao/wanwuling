@@ -85,6 +85,61 @@ export const userStore = observable({
         hobbies: data
       }
     }
+  }),
+
+  // 更新用户知识范围——科学知识
+  updateUserKnowledgeScienceAction: action(function(data) {
+    this.userInfo = {
+      ...this.userInfo,
+      knowledge: {
+        ...this.userInfo.knowledge,
+        science: data
+      }
+    }
+  }),
+
+  // 更新用户知识范围——语言防火墙
+  updateUserKnowledgeLanguageAction: action(function(data) {
+    this.userInfo = {
+      ...this.userInfo,
+      knowledge: {
+        ...this.userInfo.knowledge,
+        language: data
+      }
+    }
+  }),
+
+  // 更新用户知识范围——娱乐内容
+  updateUserKnowledgeFunAction: action(function(data) {
+    this.userInfo = {
+      ...this.userInfo,
+      knowledge: {
+        ...this.userInfo.knowledge,
+        fun: data
+      }
+    }
+  }),
+
+  // 更新用户知识范围——社会与文化
+  updateUserKnowledgeSocialAction: action(function(data) {
+    this.userInfo = {
+      ...this.userInfo,
+      knowledge: {
+        ...this.userInfo.knowledge,
+        social: data
+      }
+    }
+  }),
+
+  // 更新用户知识范围——世界观
+  updateUserKnowledgeWorldAction: action(function(data) {
+    this.userInfo = {
+      ...this.userInfo,
+      knowledge: {
+        ...this.userInfo.knowledge,
+        world: data
+      }
+    }
   })
 }, {
   deep: true
