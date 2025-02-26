@@ -1,40 +1,40 @@
 <view class="container">
-  <image src="../../../images/step1-bg.webp" mode="aspectFill" class="bg" />
+  <image src="/packageUser/images/step1-bg.webp" mode="aspectFill" class="bg" />
   <view class="content">
-    <image src="../../../images/step1-hi.webp" mode="aspectFill" class="hi" />
+    <image src="/packageUser/images/step1-hi.webp" mode="aspectFill" class="hi" />
     <view class="words">
       <text style="font-family: 'SmileySans'; font-weight: 300; font-size: 30rpx;">在进入LING世界前，我们需要收集一些信息并设置内容保护，让小灵更懂你~</text>
     </view>
     <view class="avatar">
       <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-        <image src="{{avatarUrl || '../../../images/default-avatar.webp'}}" class="default-avatar"/>
+        <image src="{{avatarUrl || '/images/default-avatar.webp'}}" class="default-avatar"/>
       </button>
-      <image src="../../../images/step1-camera.webp" style="width: 50rpx; height: 50rpx;" />
+      <image src="/packageUser/images/step1-camera.webp" style="width: 50rpx; height: 50rpx;" />
     </view>
     <view class="info">
       <view class="name">
-        <image src="../../../images/step1-nickname.webp" style="width: 300rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
+        <image src="/packageUser/images/step1-nickname.webp" style="width: 300rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
         <van-field custom-style="border-radius: 60rpx; width: 100%; height: 70rpx;" placeholder="输入昵称" center value="{{ username || '' }}" bind:change="onUsernameChange" type="nickname" bind:nicknamereview="onUsernameReview" name="username" />
       </view>
       <view class="birthday name">
         <van-popup show="{{show}}" position="bottom" round bind:close="onClose" lock-scroll>
           <van-datetime-picker type="date" value="{{ currentDate }}" formatter="{{ formatter }}" show-toolbar title="选择生日" bind:confirm="onDateConfirm" bind:cancel="onClose" />
         </van-popup>
-        <image src="../../../images/step1-birthday.webp" style="width: 300rpx; height: 95rpx; margin-left: -22rpx; margin-bottom: -10rpx;" />
+        <image src="/packageUser/images/step1-birthday.webp" style="width: 300rpx; height: 95rpx; margin-left: -22rpx; margin-bottom: -10rpx;" />
         <van-field custom-style="border-radius: 60rpx; width: 100%; height: 70rpx;" placeholder="小朋友在生日时会收到祝福和惊喜" center bind:tap="showPopup" value="{{displayDate}}" />
       </view>
       <view class="sex name">
-        <image src="../../../images/step1-sex.webp" style="width: 300rpx; height: 95rpx; margin-left: -22rpx; margin-bottom: -10rpx;" />
+        <image src="/packageUser/images/step1-sex.webp" style="width: 300rpx; height: 95rpx; margin-left: -22rpx; margin-bottom: -10rpx;" />
         <text style="color: #AEAAAA; font-size: 30rpx;">用小朋友更感兴趣的方式聊天</text>
         <view class="options">
-          <image src="{{gender === 'girl' ? '../../../images/step1-girl-s.webp' : '../../../images/step1-girl.webp'}}" class="opt-img" mode="aspectFill" style="margin-left: -16rpx;" data-gender="girl" bind:tap="onGenderSelect" />
-          <image src="{{gender === 'boy' ? '../../../images/step1-boy-s.webp' : '../../../images/step1-boy.webp'}}" class="opt-img" mode="aspectFill" style="margin-left: -16rpx;" data-gender="boy" bind:tap="onGenderSelect" />
-          <image src="{{gender === 'unknown' ? '../../../images/step1-unknown-s.png' : '../../../images/step1-unknown.webp'}}" class="opt-img" mode="aspectFill" style="width: 200rpx; height: 85rpx;" data-gender="unknown" bind:tap="onGenderSelect" />
+          <image src="{{gender === 'girl' ? '/packageUser/images/step1-girl-s.webp' : '/packageUser/images/step1-girl.webp'}}" class="opt-img" mode="aspectFill" style="margin-left: -16rpx;" data-gender="girl" bind:tap="onGenderSelect" />
+          <image src="{{gender === 'boy' ? '/packageUser/images/step1-boy-s.webp' : '/packageUser/images/step1-boy.webp'}}" class="opt-img" mode="aspectFill" style="margin-left: -16rpx;" data-gender="boy" bind:tap="onGenderSelect" />
+          <image src="{{gender === 'unknown' ? '/packageUser/images/step1-unknown-s.png' : '/packageUser/images/step1-unknown.webp'}}" class="opt-img" mode="aspectFill" style="width: 200rpx; height: 85rpx;" data-gender="unknown" bind:tap="onGenderSelect" />
         </view>
       </view>
     </view>
     <view class="arrow">
-      <image src="../../../images/arrow-next.webp" style="width: 170rpx; height: 50rpx;" bind:tap="navigateToStepTwo" />
+      <image src="/packageUser/images/arrow-next.webp" style="width: 170rpx; height: 50rpx;" bind:tap="navigateToStepTwo" />
     </view>
     <view style="width: 100%; display: flex; justify-content: center; align-items: center;">
       <infoTips />

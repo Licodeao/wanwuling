@@ -3,7 +3,7 @@
   <view class="top">
     <view class="user" bind:tap="navigateToPersonal">
       <view class="left">
-        <image src="{{ token && userInfo.avatarUrl ? userInfo.avatarUrl : '../../packageUser/images/default-avatar.webp' }}" mode="aspectFill" style="width: 160rpx; height: 160rpx; border-radius: 50%;" />
+        <image src="{{ token && userInfo.avatarUrl ? userInfo.avatarUrl : '../../images/default-avatar.webp' }}" mode="aspectFill" style="width: 160rpx; height: 160rpx; border-radius: 50%;" />
         <view class="info">
           <view class="name">{{ token ? userInfo.username : '立即登录' }}</view>
           <view class="desc">查看或编辑个人资料 ></view>
