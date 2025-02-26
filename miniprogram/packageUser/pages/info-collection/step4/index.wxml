@@ -1,11 +1,11 @@
 <view class="container">
-  <image src="/packageUser/images/step3-bg.webp" mode="aspectFill" class="bg" />
+  <image src="/packageUser/images/step3-bg.png" mode="aspectFill" class="bg" />
   <view class="content">
     <view class="info">
       <view class="entertainment">
         <view class="top">
           <van-checkbox value="{{funAll}}" bind:change="onFunAllChange" />
-          <image src="/packageUser/images/step4-entertainment.webp" style="width: 300rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
+          <image src="/packageUser/images/step4-entertainment.png" style="width: 300rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
         </view>
         <view class="aim">
           <view style="color: #C9C6C6; font-size: 28rpx; margin-top: -10rpx;">
@@ -26,7 +26,7 @@
       <view class="social">
         <view class="top">
           <van-checkbox value="{{socialAll}}" bind:change="onSocialAllChange" />
-          <image src="/packageUser/images/step4-social.webp" style="width: 330rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
+          <image src="/packageUser/images/step4-social.png" style="width: 330rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
         </view>
         <view class="aim">
           <view style="color: #C9C6C6; font-size: 28rpx; margin-top: -10rpx;">
@@ -47,7 +47,7 @@
       <view class="world">
         <view class="top">
           <van-checkbox value="{{worldAll}}" bind:change="onWorldAllChange" />
-          <image src="/packageUser/images/step4-world.webp" style="width: 265rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
+          <image src="/packageUser/images/step4-world.png" style="width: 265rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
         </view>
         <view class="aim">
           <view style="color: #C9C6C6; font-size: 28rpx; margin-top: -10rpx;">
@@ -76,8 +76,8 @@
       </view>
     </view>
     <view style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-top: 40rpx;">
-      <image src="/packageUser/images/arrow-before.webp" style="width: 160rpx; height: 45rpx;" bind:tap="navigateBackToPrevious" />
-      <image src="/packageUser/images/arrow-finish.webp" style="width: 230rpx; height: 55rpx;" bind:tap="navigateToNextPage" />
+      <image src="/packageUser/images/arrow-before.png" style="width: 160rpx; height: 45rpx;" bind:tap="navigateBackToPrevious" />
+      <image src="/packageUser/images/arrow-finish.png" style="width: 230rpx; height: 55rpx;" bind:tap="navigateToNextPage" />
     </view>
     <view style="width: 100%; display: flex; justify-content: center; align-items: center; margin-top: 30rpx;">
       <infoTips />

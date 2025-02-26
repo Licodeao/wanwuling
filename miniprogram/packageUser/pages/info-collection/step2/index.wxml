@@ -1,43 +1,43 @@
 <view class="container">
-  <image src="/packageUser/images/step2-bg.webp" mode="aspectFill" class="bg" />
+  <image src="/packageUser/images/step2-bg.png" mode="aspectFill" class="bg" />
   <view class="content">
     <image src="/packageUser/images/step2-topText.png" mode="aspectFit" class="topText" />
     <view class="info">
       <view class="mode">
-        <image src="/packageUser/images/step2-mode.webp" style="width: 300rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
+        <image src="/packageUser/images/step2-mode.png" style="width: 300rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
         <view class="mode-select">
-          <image src="{{mode === 'interesting' ? '/packageUser/images/step2-qw-s.webp' : '/packageUser/images/step2-qw.webp'}}" style="width: 230rpx; height: 140rpx;" data-mode="interesting" bind:tap="onModeSelect" />
-          <image src="{{mode === 'science' ? '/packageUser/images/step2-kp-s.webp' : '/packageUser/images/step2-kp.webp'}}" style="width: 230rpx; height: 140rpx;" data-mode="science" bind:tap="onModeSelect" />
+          <image src="{{mode === 'interesting' ? '/packageUser/images/step2-qw-s.png' : '/packageUser/images/step2-qw.png'}}" style="width: 230rpx; height: 140rpx;" data-mode="interesting" bind:tap="onModeSelect" />
+          <image src="{{mode === 'science' ? '/packageUser/images/step2-kp-s.png' : '/packageUser/images/step2-kp.png'}}" style="width: 230rpx; height: 140rpx;" data-mode="science" bind:tap="onModeSelect" />
         </view>
       </view>
       <view class="area">
         <van-popup show="{{areaShow}}" position="bottom" round bind:close="onAreaClose" lock-scroll>
           <van-area area-list="{{ areaList }}" bind:cancel="onAreaClose" bind:confirm="onAreaConfirm" title="选择所在城市" columns-num="{{ 1 }}" />
         </van-popup>
-        <image src="/packageUser/images/step2-secondText.webp" style="width: 340rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
-        <van-field custom-style="border-radius: 60rpx; width: 100%; height: 70rpx;" placeholder="科普更多风土人情" center bind:tap="showAreaPopup" value="{{displayLocation}}" />
+        <image src="/packageUser/images/step2-secondText.png" style="width: 340rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
+        <van-field custom-style="border-radius: 60rpx; width: 100%; height: 70rpx;" placeholder="科普更多风土人情" center bind:tap="showAreaPopup" value="{{displayLocation}}" readonly />
       </view>
       <view class="preference">
-        <image src="/packageUser/images/step2-thirdText.webp" style="width: 400rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
+        <image src="/packageUser/images/step2-thirdText.png" style="width: 400rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
         <view class="options">
-          <image src="{{selectedHobbies[0] ? '/packageUser/images/step2-nature-s.webp' : '/packageUser/images/step2-nature.webp'}}" style="width: 210rpx; height: 80rpx;"
+          <image src="{{selectedHobbies[0] ? '/packageUser/images/step2-nature-s.png' : '/packageUser/images/step2-nature.png'}}" style="width: 210rpx; height: 80rpx;"
           data-index="0" data-hobby="nature" bind:tap="onHobbySelect" />
-          <image src="{{selectedHobbies[1] ? '/packageUser/images/step2-animal-s.webp' : '/packageUser/images/step2-animal.webp'}}" style="width: 210rpx; height: 80rpx;"
+          <image src="{{selectedHobbies[1] ? '/packageUser/images/step2-animal-s.png' : '/packageUser/images/step2-animal.png'}}" style="width: 210rpx; height: 80rpx;"
           data-index="1" data-hobby="animal" bind:tap="onHobbySelect" />
-          <image src="{{selectedHobbies[2] ? '/packageUser/images/step2-history-s.webp' : '/packageUser/images/step2-history.webp'}}" style="width: 210rpx; height: 80rpx;"
+          <image src="{{selectedHobbies[2] ? '/packageUser/images/step2-history-s.png' : '/packageUser/images/step2-history.png'}}" style="width: 210rpx; height: 80rpx;"
           data-index="2" data-hobby="history" bind:tap="onHobbySelect" />
-          <image src="{{selectedHobbies[3] ? '/packageUser/images/step2-engineer-s.webp' : '/packageUser/images/step2-engineer.webp'}}" style="width: 210rpx; height: 80rpx;"
+          <image src="{{selectedHobbies[3] ? '/packageUser/images/step2-engineer-s.png' : '/packageUser/images/step2-engineer.png'}}" style="width: 210rpx; height: 80rpx;"
           data-index="3" data-hobby="engineer" bind:tap="onHobbySelect" />
-          <image src="{{selectedHobbies[4] ? '/packageUser/images/step2-art-s.webp' : '/packageUser/images/step2-art.webp'}}" style="width: 210rpx; height: 80rpx;"
+          <image src="{{selectedHobbies[4] ? '/packageUser/images/step2-art-s.png' : '/packageUser/images/step2-art.png'}}" style="width: 210rpx; height: 80rpx;"
           data-index="4" data-hobby="art" bind:tap="onHobbySelect" />
-          <image src="{{selectedHobbies[5] ? '/packageUser/images/step2-healthy-s.webp' : '/packageUser/images/step2-healthy.webp'}}" style="width: 210rpx; height: 80rpx;"
+          <image src="{{selectedHobbies[5] ? '/packageUser/images/step2-healthy-s.png' : '/packageUser/images/step2-healthy.png'}}" style="width: 210rpx; height: 80rpx;"
           data-index="5" data-hobby="sport" bind:tap="onHobbySelect" />
         </view>
       </view>
     </view>
     <view style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-top: 70rpx;">
-      <image src="/packageUser/images/arrow-before.webp" style="width: 170rpx; height: 50rpx;" bind:tap="navigateBackToPrevious" />
-      <image src="/packageUser/images/arrow-next.webp" style="width: 170rpx; height: 50rpx;" bind:tap="navigateToNextPage" />
+      <image src="/packageUser/images/arrow-before.png" style="width: 170rpx; height: 50rpx;" bind:tap="navigateBackToPrevious" />
+      <image src="/packageUser/images/arrow-next.png" style="width: 170rpx; height: 50rpx;" bind:tap="navigateToNextPage" />
     </view>
     <view style="width: 100%; display: flex; justify-content: center; align-items: center; margin-top: 30rpx;">
       <infoTips />

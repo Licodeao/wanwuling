@@ -1,7 +1,7 @@
 <view class="container">
-  <image class="bg-image" src="/packageUser/images/bg.webp" mode="aspectFill" />
-  <image src="/packageUser/images/logo.webp" style="width: 640rpx; height: 200rpx;" class="logo" />
-  <image class="words" src="/packageUser/images/ling.webp" mode="aspectFill"/>
+  <image class="bg-image" src="/packageUser/images/bg.png" mode="aspectFill" />
+  <image src="/packageUser/images/logo.png" style="width: 640rpx; height: 200rpx;" class="logo" />
+  <image class="words" src="/packageUser/images/ling.png" mode="aspectFill"/>
   <button class="login-btn" open-type="getPhoneNumber" bindgetphonenumber="loginByPhone" style="background-color: #1665E0; margin-top: 125rpx; box-shadow: 0 15rpx 24rpx 0rpx #94E0FD">
     <view class="btn-wrapper">
       <text style="font-weight: 400; font-size: 32rpx; letter-spacing: 6rpx;">本机号码一键登录</text>
