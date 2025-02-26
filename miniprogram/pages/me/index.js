@@ -23,5 +23,10 @@ Page({
         url: '../../packageUser/pages/personal/index',
       })
     }
+  },
+  navigateToBluetooth() {
+    wx.navigateTo({
+      url: '../search/search',
+    })
   }
 })

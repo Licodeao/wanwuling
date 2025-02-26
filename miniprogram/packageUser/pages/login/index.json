@@ -2,6 +2,5 @@
   "usingComponents": {
     "van-radio": "@vant/weapp/radio/index"
   },
-  "navigationBarTitleText": "登录",
-  "navigationBarBackgroundColor": "#88C6F9"
+  "navigationBarTitleText": "登录"
 }

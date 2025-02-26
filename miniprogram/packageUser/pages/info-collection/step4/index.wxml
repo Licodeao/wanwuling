@@ -1,0 +1,86 @@
+<view class="container">
+  <image src="../../../images/step3-bg.webp" mode="aspectFill" class="bg" />
+  <view class="content">
+    <view class="info">
+      <view class="entertainment">
+        <view class="top">
+          <van-checkbox value="{{funAll}}" bind:change="onFunAllChange" />
+          <image src="../../../images/step4-entertainment.webp" style="width: 300rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
+        </view>
+        <view class="aim">
+          <view style="color: #C9C6C6; font-size: 28rpx; margin-top: -10rpx;">
+            <text>避免儿童接触成人向的娱乐资讯</text>
+          </view>
+          <van-divider borderColor="#0863DC" custom-style="margin-top: 16rpx;" />
+        </view>
+        <view class="subjects">
+          <view class="opt" wx:for="{{funChecks}}" wx:key="id">
+            <van-checkbox value="{{item.checked}}" bind:change="onFunItemChange" data-index="{{index}}" icon-size="26rpx" />
+            <view style="display: flex; flex-direction: row; justify-content: flex-start; align-items: center; gap: 15rpx;">
+              <text style="font-weight: 500; font-size: 30rpx;">{{item.title}}</text>
+              <text style="font-size: 26rpx; color: #8FAADC;font-weight: 500;">{{item.desc}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="social">
+        <view class="top">
+          <van-checkbox value="{{socialAll}}" bind:change="onSocialAllChange" />
+          <image src="../../../images/step4-social.webp" style="width: 330rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
+        </view>
+        <view class="aim">
+          <view style="color: #C9C6C6; font-size: 28rpx; margin-top: -10rpx;">
+            <text>过滤不适合儿童的社会话题和文化内容</text>
+          </view>
+          <van-divider borderColor="#0863DC" custom-style="margin-top: 16rpx;" />
+        </view>
+        <view class="subjects">
+          <view class="opt" wx:for="{{socialChecks}}" wx:key="id">
+            <van-checkbox value="{{item.checked}}" bind:change="onSocialItemChange" data-index="{{index}}" icon-size="26rpx" />
+            <view style="display: flex; flex-direction: row; justify-content: flex-start; align-items: center; gap: 15rpx;">
+              <text style="font-weight: 500; font-size: 30rpx;">{{item.title}}</text>
+              <text style="font-size: 26rpx; color: #8FAADC;font-weight: 500;">{{item.desc}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="world">
+        <view class="top">
+          <van-checkbox value="{{worldAll}}" bind:change="onWorldAllChange" />
+          <image src="../../../images/step4-world.webp" style="width: 265rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
+        </view>
+        <view class="aim">
+          <view style="color: #C9C6C6; font-size: 28rpx; margin-top: -10rpx;">
+            <text>确保AI输出的内容符合儿童认知和价值观</text>
+          </view>
+          <van-divider borderColor="#0863DC" custom-style="margin-top: 16rpx;" />
+        </view>
+        <view class="subjects">
+          <view wx:for="{{worldChecks}}" wx:key="id">
+            <view class="opt" wx:if="{{!item.isSpecial}}">
+              <van-checkbox icon-size="26rpx" value="{{item.checked}}" bind:change="onWorldItemChange" data-index="{{index}}" />
+              <view style="display: flex; flex-direction: row; justify-content: flex-start; align-items: center; gap: 15rpx;">
+                <text style="font-weight: 500; font-size: 30rpx;">{{item.title}}</text>
+                <text style="font-size: 26rpx; color: #8FAADC;font-weight: 500;">{{item.desc}}</text>
+              </view>
+            </view>
+            <view class="custom-opt" wx:else>
+              <van-checkbox icon-size="26rpx" style="margin-top: 8rpx;" value="{{item.checked}}" bind:change="onWorldItemChange" data-index="{{index}}" />
+              <view style="width: 100%;">
+                <text style="font-weight: 500; font-size: 30rpx;">{{item.title}}</text>
+                <text style="font-size: 26rpx; color: #8FAADC;font-weight: 500;"> {{item.desc}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-top: 40rpx;">
+      <image src="../../../images/arrow-before.webp" style="width: 160rpx; height: 45rpx;" bind:tap="navigateBackToPrevious" />
+      <image src="../../../images/arrow-finish.webp" style="width: 230rpx; height: 55rpx;" bind:tap="navigateToNextPage" />
+    </view>
+    <view style="width: 100%; display: flex; justify-content: center; align-items: center; margin-top: 30rpx;">
+      <infoTips />
+    </view>
+  </view>
+</view>

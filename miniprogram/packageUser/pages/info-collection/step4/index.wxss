@@ -1,0 +1,88 @@
+.container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.container .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.container .content {
+  padding: 75rpx 50rpx;
+}
+
+.container .content .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 25rpx;
+}
+
+.container .content .info .entertainment,
+.container .content .info .social,
+.container .content .info .world {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.container .content .info .entertainment .top,
+.container .content .info .social .top,
+.container .content .info .world .top {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.container .content .info .entertainment .aim,
+.container .content .info .social .aim,
+.container .content .info .world .aim {
+  width: 100%;
+}
+
+.container .content .info .entertainment .subjects,
+.container .content .info .social .subjects {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: 'SmileySans';
+  gap: 18rpx;
+}
+
+.container .content .info .world .subjects {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-family: 'SmileySans';
+  gap: 18rpx;
+}
+
+.container .content .info .entertainment .subjects .opt,
+.container .content .info .social .subjects .opt,
+.container .content .info .world .subjects .opt {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.custom-opt {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+}

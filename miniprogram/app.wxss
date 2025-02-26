@@ -1,1 +1,4 @@
-
+@font-face {
+  font-family: "SmileySans";
+  src: url('cloud://wanwuling-5gxoy7il47baaafa.7761-wanwuling-5gxoy7il47baaafa-1341042436/SmileySans-Oblique.otf');
+}

@@ -5,17 +5,22 @@
     "pages/interact/index",
     "pages/content/index",
     "pages/device/device",
-    "pages/search/search"
+    "pages/search/search",
+    "components/info-cell/index"
   ],
   "subPackages": [
     {
       "root": "packageUser",
       "pages": [
         "pages/login/index",
-        "pages/info-collection/index",
         "pages/personal/index",
         "pages/privacy/index",
-        "pages/service/index"
+        "pages/service/index",
+        "pages/info-collection/step1/index",
+        "pages/info-collection/step2/index",
+        "pages/info-collection/step3/index",
+        "pages/info-collection/step4/index",
+        "components/infoTips/index"
       ]
     },
     {
@@ -30,11 +35,15 @@
   "preloadRule": {
     "pages/me/index": {
       "network": "all",
-      "packages": ["packageUser"]
+      "packages": [
+        "packageUser"
+      ]
     },
     "pages/interact/index": {
       "network": "all",
-      "packages": ["packageDevice"]
+      "packages": [
+        "packageDevice"
+      ]
     }
   },
   "window": {

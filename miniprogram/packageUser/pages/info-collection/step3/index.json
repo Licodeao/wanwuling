@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-divider": "@vant/weapp/divider/index",
+    "infoTips": "../../../components/infoTips/index"
+  },
+  "navigationBarTitleText": "信息收集",
+  "navigationBarBackgroundColor": "#fff"
+}
