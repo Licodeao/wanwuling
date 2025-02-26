@@ -1,7 +1,7 @@
 <view class="container">
-  <image src="../../../images/step3-bg.webp" mode="aspectFill" class="bg" />
+  <image src="/packageUser/images/step3-bg.png" mode="aspectFill" class="bg" />
   <view class="content">
-    <image src="../../../images/step3-title.webp" mode="aspectFit" class="title" />
+    <image src="/packageUser/images/step3-title.png" mode="aspectFit" class="title" />
     <view class="words">
       <text style="font-family: 'SmileySans'; font-weight: 300; font-size: 30rpx;">感谢您的信任与配合</text>
     </view>
@@ -9,7 +9,7 @@
       <view class="science">
         <view class="top">
           <van-checkbox value="{{scienceAll}}" bind:change="onScienceAllChange" />
-          <image src="../../../images/step3-topText.webp" style="width: 300rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
+          <image src="/packageUser/images/step3-topText.png" style="width: 300rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
         </view>
         <view class="aim">
           <view style="color: #C9C6C6; font-size: 28rpx; margin-top: -10rpx;">
@@ -30,7 +30,7 @@
       <view class="language">
         <view class="top">
           <van-checkbox value="{{languageAll}}" bind:change="onLanguageAllChange" />
-          <image src="../../../images/step3-secondText.webp" style="width: 220rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
+          <image src="/packageUser/images/step3-secondText.png" style="width: 220rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
         </view>
         <view class="aim">
           <view style="color: #C9C6C6; font-size: 28rpx; margin-top: -10rpx;">
@@ -50,8 +50,8 @@
       </view>
     </view>
     <view style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-top: 70rpx;">
-      <image src="../../../images/arrow-before.webp" style="width: 170rpx; height: 50rpx;" bind:tap="navigateBackToPrevious" />
-      <image src="../../../images/arrow-next.webp" style="width: 170rpx; height: 50rpx;" bind:tap="navigateToNextPage" />
+      <image src="/packageUser/images/arrow-before.png" style="width: 170rpx; height: 50rpx;" bind:tap="navigateBackToPrevious" />
+      <image src="/packageUser/images/arrow-next.png" style="width: 170rpx; height: 50rpx;" bind:tap="navigateToNextPage" />
     </view>
     <view style="width: 100%; display: flex; justify-content: center; align-items: center; margin-top: 30rpx;">
       <infoTips />

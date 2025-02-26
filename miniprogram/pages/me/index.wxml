@@ -1,9 +1,9 @@
 <view class="container">
-  <image src="../../images/welcome.webp" class="bg" />
+  <image src="../../images/welcome.png" class="bg" />
   <view class="top">
     <view class="user" bind:tap="navigateToPersonal">
       <view class="left">
-        <image src="{{ token && userInfo.avatarUrl ? userInfo.avatarUrl : '../../packageUser/images/default-avatar.webp' }}" mode="aspectFill" style="width: 160rpx; height: 160rpx; border-radius: 50%;" />
+        <image src="{{ token && userInfo.avatarUrl ? userInfo.avatarUrl : '../../images/default-avatar.png' }}" mode="aspectFill" style="width: 160rpx; height: 160rpx; border-radius: 50%;" />
         <view class="info">
           <view class="name">{{ token ? userInfo.username : '立即登录' }}</view>
           <view class="desc">查看或编辑个人资料 ></view>
@@ -14,14 +14,14 @@
   <view class="cardBox" style="width: 100%; height: 370rpx;">
     <view class="tops">
       <view class="device" bind:tap="navigateToBluetooth">
-        <image src="../../images/device.webp" class="card" />
+        <image src="../../images/device.png" class="card" />
         <view class="info">
           <view class="title">设备管理</view>
           <view class="connect">已连接 <text style="font-size: 50rpx;">{{1}}</text> 位伙伴 ></view>
         </view>
       </view>
       <view class="security device">
-        <image src="../../images/security.webp" class="card" />
+        <image src="../../images/security.png" class="card" />
         <view class="info">
           <view class="title">安全管理</view>
           <view class="connect" style="margin-top: 5rpx;">管理敏感内容屏蔽 ></view>

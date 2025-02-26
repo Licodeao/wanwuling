@@ -2,7 +2,7 @@
   <form catchsubmit="formSubmit">
     <view class="top">
       <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-        <image class="avatar" src="{{userInfo.avatarUrl || '../../images/default-avatar.webp'}}"></image>
+        <image class="avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}"></image>
       </button>
       <view class="fields">
         <van-field value="{{ userInfo.username || '' }}" label="昵称" required placeholder="请输入昵称" border="{{ true }}" bind:change="onUsernameChange" type="nickname" bind:nicknamereview="onUsernameReview" name="username" />
