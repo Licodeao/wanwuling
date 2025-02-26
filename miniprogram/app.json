@@ -4,6 +4,8 @@
     "pages/me/index",
     "pages/interact/index",
     "pages/content/index",
+    "pages/device/device",
+    "pages/search/search",
     "components/info-cell/index"
   ],
   "subPackages": [
