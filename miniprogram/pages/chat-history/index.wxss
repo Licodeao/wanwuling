@@ -1,0 +1,94 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.message-list {
+  flex: 1;
+  padding: 10px;
+  overflow-y: scroll;
+}
+
+.message {
+  margin-bottom: 10px;
+  max-width: 50%; /* 设置最大宽度为50% */
+  padding: 30px;
+  border-radius: 5px;
+}
+
+.message-content-container {
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  width: 100%; /* 确保容器占据整个宽度 */
+
+}
+
+.message-content {
+  flex: 1; 
+  word-wrap: break-word; /* 长文字换行 */
+  min-width: 0; /* 确保文字不会无限扩展 */
+  width: min-content; /* 根据文字内容决定宽度 */
+  max-width: 100%; /* 确保文字不会超出容器 */
+  line-height: 1.5; /* 设置行距为 1.3 倍 */
+}
+
+.sender1 {
+  margin-top: 14px;
+  padding: 10px;
+  /* background-color: #e1f5fe; */
+  align-self: flex-start; /* 左侧 */
+  margin-right: auto; /* 向右推 */
+  border-radius: 10px;
+}
+
+.sender2 {
+  margin-top: 14px;
+  max-width: 75%;
+  padding: 15px;
+  background-color: #e1f5fe;
+  /* background-color: #ffe0b2; */
+  align-self: flex-end; /* 右侧 */
+  margin-left: auto; /* 向左推 */
+  border-radius: 10px;
+}
+
+.input-area {
+  display: flex;
+  padding: 10px;
+}
+
+.input {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.send-button {
+  margin-left: 10px;
+}
+
+.avatar {
+  width: 40px; /* 头像宽度 */
+  height: 40px; /* 头像高度 */
+  border-radius: 50%; /* 圆形 */
+  background-color: rgb(245, 135, 10); /* 头像背景色 */
+  margin-right: 20px; /* 头像与消息内容的间距 */
+  flex-shrink: 0; /* 确保头像不会被压缩 */
+}
+
+.reviewChatStory {
+  height: 55px;
+  width: 130px;
+}

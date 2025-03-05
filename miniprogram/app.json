@@ -2,7 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/me/index",
-    "pages/interact/index",
+    "pages/chat-history/index",
     "pages/content/index",
     "pages/device/device",
     "pages/search/search",
@@ -38,12 +38,6 @@
       "packages": [
         "packageUser"
       ]
-    },
-    "pages/interact/index": {
-      "network": "all",
-      "packages": [
-        "packageDevice"
-      ]
     }
   },
   "window": {
@@ -67,8 +61,8 @@
         "selectedIconPath": "images/home-selected.png"
       },
       {
-        "pagePath": "pages/interact/index",
-        "text": "互动",
+        "pagePath": "pages/chat-history/index",
+        "text": "伙伴",
         "iconPath": "images/interact.png",
         "selectedIconPath": "images/interact-selected.png"
       },
