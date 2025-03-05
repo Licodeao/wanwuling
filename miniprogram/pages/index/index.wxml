@@ -1,4 +1,23 @@
-<!--index.wxml-->
 <view class="container">
-  <view>首页</view>
+  <image src="../../images/find-bg.jpg" class="bg" />
+  <view class="top-controls">
+    <view class="expressions">
+      <image src="../../images/expression1.png" class="expression" />
+    </view>
+    <view class="elec">
+      <image src="../../images/electricity.png" style="width: 60rpx; height: 60rpx;" />
+      <view style="font-size: 40rpx;">100</view>
+    </view>
+    <view class="sound">
+      <image src="../../images/speaker.png" style="width: 55rpx; height: 55rpx;" />
+      <view class="controls">
+        <image src="../../images/sub.png" style="width: 35rpx; height: 35rpx;" />
+        <view style="font-size: 40rpx;">5</view>
+        <image src="../../images/plus.png" style="width: 40rpx; height: 40rpx;" />
+      </view>
+    </view>
+  </view>
+  <view class="bottom-note">
+    <image src="../../images/note.png" style="width: 100%; height: 100%;" />
+  </view>
 </view>
