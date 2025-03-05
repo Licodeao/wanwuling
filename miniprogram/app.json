@@ -1,11 +1,9 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/chat-history/index",
     "pages/me/index",
-    "pages/interact/index",
     "pages/content/index",
-    "pages/device/device",
-    "pages/search/search",
     "components/info-cell/index"
   ],
   "subPackages": [
@@ -28,7 +26,8 @@
       "pages": [
         "pages/device/index",
         "pages/chat-history/index",
-        "pages/bluetooth/index"
+        "pages/bluetooth/index",
+        "pages/search/index"
       ]
     }
   ],
@@ -39,7 +38,7 @@
         "packageUser"
       ]
     },
-    "pages/interact/index": {
+    "pages/chat-history/index": {
       "network": "all",
       "packages": [
         "packageDevice"
@@ -56,31 +55,25 @@
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents",
   "tabBar": {
-    "color": "#333333",
-    "selectedColor": "#479bfc",
+    "color": "#8897AC",
+    "selectedColor": "#000000",
     "backgroundColor": "#ffffff",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页",
-        "iconPath": "images/home.png",
-        "selectedIconPath": "images/home-selected.png"
+        "text": "发现",
+        "iconPath": "images/find.png",
+        "selectedIconPath": "images/find-selected.png"
       },
       {
-        "pagePath": "pages/interact/index",
-        "text": "互动",
-        "iconPath": "images/interact.png",
-        "selectedIconPath": "images/interact-selected.png"
-      },
-      {
-        "pagePath": "pages/content/index",
-        "text": "内容库",
-        "iconPath": "images/content.png",
-        "selectedIconPath": "images/content-selected.png"
+        "pagePath": "pages/chat-history/index",
+        "text": "伙伴",
+        "iconPath": "images/partner.png",
+        "selectedIconPath": "images/partner-selected.png"
       },
       {
         "pagePath": "pages/me/index",
-        "text": "我的",
+        "text": "个人中心",
         "iconPath": "images/me.png",
         "selectedIconPath": "images/me-selected.png"
       }

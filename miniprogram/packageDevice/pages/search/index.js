@@ -1,5 +1,5 @@
 const app = getApp()
-var xBlufi = require("../../utils/blufi/xBlufi.js");
+var xBlufi = require("../../../utils/blufi/xBlufi.js");
 let _this = null;
 
 Page({
