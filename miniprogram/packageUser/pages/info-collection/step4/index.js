@@ -206,43 +206,45 @@ Page({
     this.updateUserKnowledgeSocialAction(selectedSocial)
     this.updateUserKnowledgeWorldAction(selectedWorld)
 
-    const formData = {
-      phone: this.data.userInfo.phone,
-      avatarUrl: this.data.userInfo.avatarUrl,
-      username: this.data.userInfo.username,
-      preference: this.data.userInfo.preference,
-      knowledge: this.data.userInfo.knowledge
-    }
-    console.log('提交表单', formData)
-
-    wx.showLoading({
-      title: '保存中',
-    })
-
-    wx.cloud.callFunction({
-      name: 'addInfos',
-      data: {
-        info: formData
+    wx.nextTick(() => {
+      const formData = {
+        phone: this.data.userInfo.phone,
+        avatarUrl: this.data.userInfo.avatarUrl,
+        username: this.data.userInfo.username,
+        preference: this.data.userInfo.preference,
+        knowledge: this.data.userInfo.knowledge
       }
-    }).then(res => {
-      console.log('更新结果', res)
-      if (res.result.code === 200) {
-        wx.hideLoading()
-        setStorage('userInfo', res.result.data)
-        userStore.updateUserInfoAction(res.result.data)
-        wx.showToast({
-          title: res.result.message,
-          icon: 'success',
-          duration: 1000
-        })
-        setTimeout(() => {
-          wx.reLaunch({
-            url: '../../../../pages/me/index',
+      console.log('提交表单', formData)
+
+      wx.showLoading({
+        title: '保存中',
+      })
+  
+      wx.cloud.callFunction({
+        name: 'addInfos',
+        data: {
+          info: formData
+        }
+      }).then(res => {
+        console.log('更新结果', res)
+        if (res.result.code === 200) {
+          wx.hideLoading()
+          setStorage('userInfo', res.result.data)
+          userStore.updateUserInfoAction(res.result.data)
+          wx.showToast({
+            title: res.result.message,
+            icon: 'success',
+            duration: 1000
           })
-        }, 1200)
-      }
-    }).catch(err => {
-      console.log(err)
+          setTimeout(() => {
+            wx.reLaunch({
+              url: '../../../../pages/me/index',
+            })
+          }, 1200)
+        }
+      }).catch(err => {
+        console.log(err)
+      })
     })
   }
 })
