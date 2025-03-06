@@ -33,12 +33,29 @@
   margin-top: 120rpx;
 }
 
-.container .top .user .left{
+.container .top .user .left {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   gap: 40rpx;
+}
+
+.container .top .user .left .avatar-container {
+  width: 170rpx;
+  height: 170rpx;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 12rpx 40rpx rgba(100, 149, 237, 0.5);
+}
+
+.container .top .user .left .avatar-container .avatar-image {
+  width: 160rpx; 
+  height: 160rpx; 
+  border-radius: 50%;
 }
 
 .container .top .user .left .info {
@@ -58,37 +75,41 @@
   font-size: 30rpx;
 }
 
-.container .cardBox .van-cell {
-  padding-left: 0rpx !important;
-  padding-right: 0rpx !important;
+.container .cardBox {
+  width: 100%;
 }
 
 .container .cardBox .tops {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  gap: 20rpx;
+}
+
+.device, .security {
+  position: relative;
+  width: 50%;
+  border-radius: 16rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .device {
-  position: relative;
-  width: 400rpx;
-  height: 100rpx;
-  padding: 20rpx;
-  /* background-color: blue; */
+  padding: 10rpx 10rpx 10rpx 0;
+}
+
+.security {
+  padding: 10rpx 0rpx 10rpx 10rpx;
 }
 
 .card {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 330rpx;
-  height: 150rpx;
-  z-index: -1;
+  width: 100%;
+  height: 140rpx;
+  object-fit: contain;
 }
 
 .device .info {
+  position: absolute;
+  padding: 20rpx;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -96,8 +117,8 @@
 }
 
 .device .info .title {
-  font-size: 28rpx;
-  color: #899497;
+  font-size: 24rpx;
+  font-weight: 300;
 }
 
 .device .info .connect {
@@ -105,15 +126,19 @@
   margin-top: -20rpx;
 }
 
+.bottom {
+  width: 100%;
+}
+
 .bottom .history {
   width: 100%;
-  height: 150rpx;
-  background-color: #E5FCEF;
+  background-color: #E6FCEF;
   border-radius: 20rpx;
-  margin-top: 30rpx;
+  box-sizing: border-box;
 }
 
 .bottom .history .info {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -122,8 +147,12 @@
 }
 
 .bottom .history .title {
+  font-size: 24rpx;
+  font-weight: 300;
+}
+
+.connect {
   font-size: 28rpx;
-  color: #899497;
 }
 
 .container .cells {
@@ -131,4 +160,5 @@
   display: flex;
   flex-direction: column;
   gap: 40rpx;
+  margin-top: 60rpx;
 }

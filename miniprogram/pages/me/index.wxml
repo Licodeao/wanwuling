@@ -3,7 +3,9 @@
   <view class="top">
     <view class="user" bind:tap="navigateToPersonal">
       <view class="left">
-        <image src="{{ token && userInfo.avatarUrl ? userInfo.avatarUrl : '../../images/default-avatar.png' }}" mode="aspectFill" style="width: 160rpx; height: 160rpx; border-radius: 50%;" />
+        <view class="avatar-container">
+          <image src="{{ token && userInfo.avatarUrl ? userInfo.avatarUrl : '../../images/default-avatar.png' }}" mode="aspectFill" class="avatar-image" />
+        </view>
         <view class="info">
           <view class="name">{{ token ? userInfo.username : '立即登录' }}</view>
           <view class="desc">查看或编辑个人资料 ></view>
@@ -11,7 +13,7 @@
       </view>
     </view>
   </view>
-  <view class="cardBox" style="width: 100%; height: 370rpx;">
+  <view class="cardBox">
     <view class="tops">
       <view class="device" bind:tap="navigateToBluetooth">
         <image src="../../images/device.png" class="card" />
@@ -32,7 +34,7 @@
       <view class="history">
         <view class="info">
           <view class="title">聊天历史</view>
-          <view style="font-weight: bold;">目前孩子未主动谈及敏感内容 查看聊天详情 ></view>
+          <view style="font-weight: bold; font-size: 28rpx;">目前孩子未主动谈及敏感内容 查看聊天详情 ></view>
         </view>
       </view>
     </view>

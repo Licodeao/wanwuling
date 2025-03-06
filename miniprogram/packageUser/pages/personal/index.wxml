@@ -9,7 +9,7 @@
         <van-popup show="{{birthdayShow}}" position="bottom" round bind:close="onBirthdayClose" lock-scroll>
           <van-datetime-picker type="date" value="{{ currentDate }}" formatter="{{ formatter }}" show-toolbar title="更改生日" bind:confirm="onBirthdayConfirm" bind:cancel="onBirthdayClose" />
         </van-popup>
-        <van-field label="生日" value="{{userInfo.preference.birthday || ''}}" placeholder="请选择生日" required name="birthday" bind:tap="showBirthdayPopup" readonly  />
+        <van-field label="生日" value="{{userInfo.preference.birthday || ''}}" placeholder="请选择生日" required name="birthday" bind:tap="showBirthdayPopup" readonly />
         <van-popup show="{{sexShow}}" position="bottom" round bind:close="onSexClose" lock-scroll>
           <van-picker columns="{{sexColumns}}" show-toolbar title="更改性别" bind:cancel="onSexClose" bind:confirm="onSexConfirm" />
         </van-popup>
@@ -23,7 +23,7 @@
         </van-popup>
         <van-field value="{{userInfo.preference.area || ''}}" label="位置" placeholder="请选择位置(可不填)" name="area" bind:tap="showLocationPopup" readonly />
         <van-cell title="兴趣爱好(可不填)" />
-        <view class="checkGroup">
+        <!-- <view class="checkGroup">
           <van-checkbox-group value="{{ userInfo.preference.hobbies || [] }}" bind:change="onCheckBoxChange" name="hobbies">
             <view class="checkbox-row">
               <van-checkbox name="nature" class="van-check">自然科学</van-checkbox>
@@ -36,6 +36,16 @@
               <van-checkbox name="sport" class="van-check">运动健康</van-checkbox>
             </view>
           </van-checkbox-group>
+        </view> -->
+        <view class="preference">
+          <view class="options">
+            <image src="{{selectedHobbies[0] ? '/packageUser/images/step2-nature-s.png' : '/packageUser/images/step2-nature.png'}}" style="width: 210rpx; height: 80rpx;" data-index="0" data-hobby="nature" bind:tap="onHobbySelect" />
+            <image src="{{selectedHobbies[1] ? '/packageUser/images/step2-animal-s.png' : '/packageUser/images/step2-animal.png'}}" style="width: 210rpx; height: 80rpx;" data-index="1" data-hobby="animal" bind:tap="onHobbySelect" />
+            <image src="{{selectedHobbies[2] ? '/packageUser/images/step2-history-s.png' : '/packageUser/images/step2-history.png'}}" style="width: 210rpx; height: 80rpx;" data-index="2" data-hobby="history" bind:tap="onHobbySelect" />
+            <image src="{{selectedHobbies[3] ? '/packageUser/images/step2-engineer-s.png' : '/packageUser/images/step2-engineer.png'}}" style="width: 210rpx; height: 80rpx;" data-index="3" data-hobby="engineer" bind:tap="onHobbySelect" />
+            <image src="{{selectedHobbies[4] ? '/packageUser/images/step2-art-s.png' : '/packageUser/images/step2-art.png'}}" style="width: 210rpx; height: 80rpx;" data-index="4" data-hobby="art" bind:tap="onHobbySelect" />
+            <image src="{{selectedHobbies[5] ? '/packageUser/images/step2-healthy-s.png' : '/packageUser/images/step2-healthy.png'}}" style="width: 210rpx; height: 80rpx;" data-index="5" data-hobby="sport" bind:tap="onHobbySelect" />
+          </view>
         </view>
       </view>
     </view>
