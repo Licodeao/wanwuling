@@ -1,2 +1,33 @@
-<!--pages/chat-history/index.wxml-->
-<text>pages/chat-history/index.wxml</text>
+<!-- <view class="container">
+  <view class="header">回顾聊天</view>
+  <view class="message-list">
+    <view class="message" wx:for="{{messages}}" wx:key="index" style="{{item.isSender ? 'background-color: #e1f5fe;' : 'background-color: #fff;'}}">
+      <image class="avatar" src="{{item.avatar}}" />
+      <text>{{item.content}}</text>
+    </view>
+  </view>
+  <view class="input-area">
+    <input class="input" placeholder="输入消息..." />
+    <button class="send-button">发送</button>
+  </view>
+</view> -->
+
+<view class="container">
+  <view class="header">
+    <!-- <text class="title">回顾聊天</text> -->
+    <image class="reviewChatStory" src="../../images/reviewChatStory.png" mode=""/>
+  </view>
+  <view class="message-list">
+    <view class="message" wx:for="{{messages}}" wx:key="index" class="{{item.sender}}">
+      <view class="message-content-container">
+        <!-- <image class="avatar" wx:if="{{item.sender === 'sender1'}}" src="{{item.avatar}}" mode="aspectFit"></image> -->
+        <image class="avatar" src="../../images/avatar.jpg" wx:if="{{item.sender === 'sender1'}}"/>
+        <text class="message-content">{{item.content}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- <view class="input-area">
+    <input class="input" placeholder="输入消息..." bindinput="onInput" />
+    <button class="send-button" bindtap="sendMessage">发送</button>
+  </view> -->
+</view>
