@@ -26,7 +26,7 @@ Page({
   },
   navigateToBluetooth() {
     wx.navigateTo({
-      url: '../search/search',
+      url: '../../packageDevice/pages/search/index',
     })
   }
 })
