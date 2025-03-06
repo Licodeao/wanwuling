@@ -17,7 +17,9 @@ Page({
       store: userStore,
       fields: ['userInfo'],
       actions: [
-        'updateUserModeAction', 'updateUserAreaAction', 'updateUserHobbiesAction'
+        'updateUserModeAction',
+        'updateUserAreaAction',
+        'updateUserHobbiesAction'
       ]
     })
   },
@@ -26,9 +28,7 @@ Page({
   },
   onModeSelect(e) {
     const mode = e.currentTarget.dataset.mode
-    this.setData({
-      mode
-    })
+    this.setData({ mode })
     this.updateUserModeAction(convertModuleToString(mode))
   },
   onAreaClose() {

@@ -41,6 +41,10 @@ Page({
   onChooseAvatar(e) {
     const { avatarUrl } = e.detail
     if (avatarUrl) {
+      wx.showLoading({
+        title: '上传中',
+      })
+
       wx.cloud.uploadFile({
         cloudPath: `avatars/${Date.now()}.png`,
         filePath: avatarUrl,
@@ -50,6 +54,7 @@ Page({
             avatarUrl: fileID
           })
           this.updateUserAvatarUrlAction(fileID)
+          wx.hideLoading()
         },
         fail: err => {
           console.error('上传头像失败：', err)

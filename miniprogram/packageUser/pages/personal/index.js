@@ -25,17 +25,33 @@ Page({
     modeShow: false,
     modeColumns: ['趣味性','科普性'],
     locationShow: false,
+    selectedHobbies: [false, false, false, false, false, false],
+    hobbiesMap: {
+      0: 'nature',
+      1: 'animal',
+      2: 'history',
+      3: 'engineer',
+      4: 'art',
+      5: 'sport'
+    }
   },
   onLoad() {
     this.storeBindings = createStoreBindings(this, {
       store: userStore,
       fields: ['userInfo'],
       actions: [
-        'updateUserAvatarUrlAction', 'updateUsernameAction', 'updateUserBirthdayAction', 'updateUserSexualAction',
+        'updateUserAvatarUrlAction', 
+        'updateUsernameAction', 
+        'updateUserBirthdayAction', 
+        'updateUserSexualAction',
         'updateUserModeAction',
         'updateUserAreaAction',
         'updateUserHobbiesAction'
       ]
+    })
+
+    wx.nextTick(() => {
+      this.updateHobbiesStatus()
     })
   },
   onUnload() {
@@ -44,12 +60,17 @@ Page({
   onChooseAvatar(e) {
     const { avatarUrl } = e.detail
     if (avatarUrl) {
+      wx.showLoading({
+        title: '上传中'
+      })
+
       wx.cloud.uploadFile({
         cloudPath: `avatars/${Date.now()}.png`,
         filePath: avatarUrl,
         success: res => {
           const fileID = res.fileID
           this.updateUserAvatarUrlAction(fileID)
+          wx.hideLoading()
         },
         fail: err => {
           console.error('上传头像失败：', err)
@@ -137,9 +158,60 @@ Page({
   onCheckBoxChange(e) {
     this.updateUserHobbiesAction(e.detail)
   },
-  async formSubmit(e) {
-    const { username, birthday, sex, mode, area, hobbies } = e.detail.value
+  onHobbySelect(e) {
+    const { index, hobby } = e.currentTarget.dataset
+    const selectedHobbies = [...this.data.selectedHobbies]
+
+    let hobbies = []
+
+    if (this.data.userInfo && this.data.userInfo.preference && this.data.userInfo.preference.hobbies) {
+      hobbies = [...this.data.userInfo.preference.hobbies]
+    }
+
+    selectedHobbies[index] = !selectedHobbies[index]
+
+    if (selectedHobbies[index]) {
+      hobbies.push(hobby)
+    } else {
+      const hobbyIndex = hobbies.indexOf(hobby)
+      if (hobbyIndex > -1) {
+        hobbies.splice(hobbyIndex, 1)
+      }
+    }
+
+    this.setData({ selectedHobbies })
     
+    this.updateUserHobbiesAction(hobbies)
+  },
+  updateHobbiesStatus() {
+    if (!this.data.userInfo) {
+      return
+    }
+     
+    if (!this.data.userInfo.preference) {
+      this.data.userInfo.preference = {}
+    }
+    
+    if (!this.data.userInfo.preference.hobbies) {
+      this.data.userInfo.preference.hobbies = []
+    }
+    
+    const hobbies = this.data.userInfo.preference.hobbies
+
+    const selectedHobbies = this.data.selectedHobbies.map((_, index) => {
+      const hobby = this.data.hobbiesMap[index]
+      return hobbies.indexOf(hobby) > -1
+    })
+    
+    this.setData({
+      selectedHobbies
+    })
+  },
+  async formSubmit(e) {
+    const { username, birthday, sex, mode, area } = e.detail.value
+    
+    const hobbies = this.data.userInfo && this.data.userInfo.preference && this.data.userInfo.preference.hobbies || []
+
     const updateFormData = {
       phone: this.data.userInfo.phone,
       avatarUrl: this.data.userInfo.avatarUrl,
