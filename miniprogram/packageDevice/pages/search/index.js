@@ -34,7 +34,7 @@ Page({
             icon: 'none'
           })
           wx.navigateTo({
-            url: '../device/device?deviceId=' + options.data.deviceId + '&name=' + options.data.name,
+            url: '../device/index?deviceId=' + options.data.deviceId + '&name=' + options.data.name,
           });
 
         } else {
