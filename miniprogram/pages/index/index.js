@@ -11,7 +11,8 @@ Page({
     ],
     lastExpressionDate: '',
     electricity: 100,
-    sound: 5
+    sound: 5,
+    expressionStyle: ''
   },
 
   onLoad() {
@@ -20,6 +21,24 @@ Page({
 
   onShow() {
     this.updateExpression()
+  },
+
+  onReady() {
+    const { screenHeight } = wx.getWindowInfo()
+
+    let expressionStyle = ''
+
+    if (screenHeight > 800) {
+      expressionStyle = 'top: 54%'
+    } else if (screenHeight >= 730) {
+      expressionStyle = 'top: 45%'
+    } else if (screenHeight >= 600) {
+      expressionStyle = 'top: 45%'
+    } else {
+      expressionStyle = 'top: 43%'
+    }
+
+    this.setData({ expressionStyle })
   },
 
   updateExpression() {
@@ -72,8 +91,6 @@ Page({
       sound = sound + 1
     }
     
-    this.setData({
-      sound
-    })
+    this.setData({ sound })
   }
 });

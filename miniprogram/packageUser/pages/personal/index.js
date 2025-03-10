@@ -64,8 +64,12 @@ Page({
         title: '上传中'
       })
 
+      const userIdentifier = this.data.userInfo && this.data.userInfo.phone ? this.data.userInfo.phone : `temp_${Date.now()}`
+
+      const cloudPath = `avatars/${userIdentifier}.png`
+
       wx.cloud.uploadFile({
-        cloudPath: `avatars/${Date.now()}.png`,
+        cloudPath,
         filePath: avatarUrl,
         success: res => {
           const fileID = res.fileID

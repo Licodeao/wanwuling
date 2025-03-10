@@ -10,5 +10,6 @@
     "van-checkbox-group": "@vant/weapp/checkbox-group/index",
     "van-cell": "@vant/weapp/cell/index"
   },
-  "navigationBarTitleText": "完善个人信息"
+  "navigationBarTitleText": "完善个人信息",
+  "navigationBarBackgroundColor": "#fff"
 }
