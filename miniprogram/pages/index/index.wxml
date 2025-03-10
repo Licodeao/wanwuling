@@ -2,7 +2,7 @@
   <image src="../../images/find-bg.jpg" class="bg" />
   <view class="top-controls">
     <view class="expressions">
-      <image src="{{ currentExpression }}" class="expression" />
+      <image src="{{ currentExpression }}" class="expression" style="{{ expressionStyle }}" />
     </view>
     <view class="elec">
       <image src="../../images/electricity.png" style="width: 60rpx; height: 60rpx;" />
