@@ -7,8 +7,8 @@
     </view>
     <view class="info">
       <view class="science">
-        <view class="top">
-          <van-checkbox value="{{scienceAll}}" bind:change="onScienceAllChange" />
+        <view class="top" bind:tap="onScienceAllToggle">
+          <van-checkbox value="{{scienceAll}}" bind:change="onScienceAllChange" catch:tap="catchTapEvent" />
           <image src="/packageUser/images/step3-topText.png" style="width: 300rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
         </view>
         <view class="aim">
@@ -18,8 +18,8 @@
           <van-divider borderColor="#0863DC" custom-style="margin-top: 16rpx;" />
         </view>
         <view class="subjects">
-          <view class="opt" wx:for="{{scienceChecks}}" wx:key="id">
-            <van-checkbox value="{{item.checked}}" bind:change="onScienceItemChange" data-index="{{index}}" icon-size="26rpx" />
+          <view class="opt" wx:for="{{scienceChecks}}" wx:key="id" bind:tap="onScienceItemToggle" data-index="{{index}}">
+            <van-checkbox value="{{item.checked}}" bind:change="onScienceItemChange" data-index="{{index}}" catch:tap="catchTapEvent" icon-size="26rpx" />
             <view style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 15rpx;">
               <text style="font-weight: 500; font-size: 30rpx;">{{item.title}}</text>
               <text style="font-size: 26rpx; color: #8FAADC;font-weight: 500;">{{item.desc}}</text>
@@ -28,8 +28,8 @@
         </view>
       </view>
       <view class="language">
-        <view class="top">
-          <van-checkbox value="{{languageAll}}" bind:change="onLanguageAllChange" />
+        <view class="top" bind:tap="onLanguageAllToggle">
+          <van-checkbox value="{{languageAll}}" bind:change="onLanguageAllChange" catch:tap="catchTapEvent" />
           <image src="/packageUser/images/step3-secondText.png" style="width: 220rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
         </view>
         <view class="aim">
@@ -39,8 +39,8 @@
           <van-divider borderColor="#0863DC" custom-style="margin-top: 16rpx;" />
         </view>
         <view class="subjects">
-          <view class="opt" wx:for="{{languageChecks}}" wx:key="id">
-            <van-checkbox value="{{item.checked}}" bind:change="onLanguageItemChange" data-index="{{index}}" icon-size="26rpx" />
+          <view class="opt" wx:for="{{languageChecks}}" wx:key="id" bind:tap="onLanguageItemToggle" data-index="{{index}}">
+            <van-checkbox value="{{item.checked}}" bind:change="onLanguageItemChange"data-index="{{index}}" catch:tap="catchTapEvent" icon-size="26rpx" />
             <view style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 15rpx;">
               <text style="font-weight: 500; font-size: 30rpx;">{{item.title}}</text>
               <text style="font-size: 26rpx; color: #8FAADC;font-weight: 500;">{{item.desc}}</text>

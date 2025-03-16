@@ -7,8 +7,8 @@
     "miniprogram": {
       "list": [
         {
-          "name": "home",
-          "pathName": "pages/index/index",
+          "name": "step4",
+          "pathName": "packageUser/pages/info-collection/step4/index",
           "query": "",
           "launchMode": "default",
           "scene": null
