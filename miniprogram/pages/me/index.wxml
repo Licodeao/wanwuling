@@ -47,4 +47,6 @@
     <info-cell title="产品优化建议" />
     <info-cell title="与我们合作" />
   </view>
+  <van-dialog id="van-dialog" />
+  <van-button wx:if="{{token}}" type="info" round size="normal" style="width: 100%; margin-top: 30rpx;" bind:tap="handleLogout">退出登录</van-button>
 </view>

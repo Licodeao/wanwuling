@@ -1,12 +1,14 @@
 .container {
   position: relative;
-  height: 90vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   margin: 40rpx;
   font-family: "SmileySans";
+  padding-bottom: 30rpx;
+  box-sizing: border-box;
 }
 
 .container .bg {
@@ -77,7 +79,7 @@
 
 .container .cardBox {
   width: 100%;
-  margin-top: 70rpx;
+  margin-top: 30rpx;
 }
 
 .container .cardBox .tops {
@@ -161,5 +163,13 @@
   display: flex;
   flex-direction: column;
   gap: 40rpx;
-  margin-top: 60rpx;
+  margin-top: 30rpx;
+}
+
+.van-button--normal {
+  width: 100% !important;
+}
+
+.van-dialog__confirm {
+  color: #4187F2 !important;
 }

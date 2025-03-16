@@ -2,6 +2,8 @@
   "navigationBarBackgroundColor": "#fff",
   "navigationBarTitleText": "",
   "usingComponents": {
-    "info-cell": "../../components/info-cell/index"
+    "info-cell": "../../components/info-cell/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-dialog": "@vant/weapp/dialog/index"
   }
 }

@@ -3,8 +3,8 @@
   <view class="content">
     <view class="info">
       <view class="entertainment">
-        <view class="top">
-          <van-checkbox value="{{funAll}}" bind:change="onFunAllChange" />
+        <view class="top" bind:tap="onFunAllToggle">
+          <van-checkbox value="{{funAll}}" bind:change="onFunAllChange" catch:tap="catchTapEvent" />
           <image src="/packageUser/images/step4-entertainment.png" style="width: 300rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
         </view>
         <view class="aim">
@@ -14,8 +14,10 @@
           <van-divider borderColor="#0863DC" custom-style="margin-top: 16rpx;" />
         </view>
         <view class="subjects">
-          <view class="opt" wx:for="{{funChecks}}" wx:key="id">
-            <van-checkbox value="{{item.checked}}" bind:change="onFunItemChange" data-index="{{index}}" icon-size="26rpx" />
+          <view class="opt" wx:for="{{funChecks}}" wx:key="id" bind:tap="onFunItemToggle" data-index="{{index}}">
+            <van-checkbox value="{{item.checked}}" bind:change="onFunItemChange" data-index="{{index}}" 
+            catch:tap="catchTapEvent"
+            icon-size="26rpx" />
             <view style="display: flex; flex-direction: row; justify-content: flex-start; align-items: center; gap: 15rpx;">
               <text style="font-weight: 500; font-size: 30rpx;">{{item.title}}</text>
               <text style="font-size: 26rpx; color: #8FAADC;font-weight: 500;">{{item.desc}}</text>
@@ -24,8 +26,8 @@
         </view>
       </view>
       <view class="social">
-        <view class="top">
-          <van-checkbox value="{{socialAll}}" bind:change="onSocialAllChange" />
+        <view class="top" bind:tap="onSocialAllToggle">
+          <van-checkbox value="{{socialAll}}" bind:change="onSocialAllChange" catch:tap="catchTapEvent" />
           <image src="/packageUser/images/step4-social.png" style="width: 330rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
         </view>
         <view class="aim">
@@ -35,8 +37,10 @@
           <van-divider borderColor="#0863DC" custom-style="margin-top: 16rpx;" />
         </view>
         <view class="subjects">
-          <view class="opt" wx:for="{{socialChecks}}" wx:key="id">
-            <van-checkbox value="{{item.checked}}" bind:change="onSocialItemChange" data-index="{{index}}" icon-size="26rpx" />
+          <view class="opt" wx:for="{{socialChecks}}" wx:key="id" bind:tap="onSocialItemToggle" data-index="{{index}}">
+            <van-checkbox value="{{item.checked}}" bind:change="onSocialItemChange" data-index="{{index}}" 
+            catch:tap="catchTapEvent"
+            icon-size="26rpx" />
             <view style="display: flex; flex-direction: row; justify-content: flex-start; align-items: center; gap: 15rpx;">
               <text style="font-weight: 500; font-size: 30rpx;">{{item.title}}</text>
               <text style="font-size: 26rpx; color: #8FAADC;font-weight: 500;">{{item.desc}}</text>
@@ -45,8 +49,8 @@
         </view>
       </view>
       <view class="world">
-        <view class="top">
-          <van-checkbox value="{{worldAll}}" bind:change="onWorldAllChange" />
+        <view class="top" bind:tap="onWorldAllToggle">
+          <van-checkbox value="{{worldAll}}" bind:change="onWorldAllChange" catch:tap="catchTapEvent" />
           <image src="/packageUser/images/step4-world.png" style="width: 265rpx; height: 95rpx; margin-left: -25rpx; margin-bottom: -10rpx;" />
         </view>
         <view class="aim">
@@ -56,16 +60,16 @@
           <van-divider borderColor="#0863DC" custom-style="margin-top: 16rpx;" />
         </view>
         <view class="subjects">
-          <view wx:for="{{worldChecks}}" wx:key="id">
+          <view wx:for="{{worldChecks}}" wx:key="id" bind:tap="onWorldItemToggle" data-index="{{index}}">
             <view class="opt" wx:if="{{!item.isSpecial}}">
-              <van-checkbox icon-size="26rpx" value="{{item.checked}}" bind:change="onWorldItemChange" data-index="{{index}}" />
+              <van-checkbox icon-size="26rpx" value="{{item.checked}}" bind:change="onWorldItemChange" data-index="{{index}}" catch:tap="catchTapEvent" />
               <view style="display: flex; flex-direction: row; justify-content: flex-start; align-items: center; gap: 15rpx;">
                 <text style="font-weight: 500; font-size: 30rpx;">{{item.title}}</text>
                 <text style="font-size: 26rpx; color: #8FAADC;font-weight: 500;">{{item.desc}}</text>
               </view>
             </view>
             <view class="custom-opt" wx:else>
-              <van-checkbox icon-size="26rpx" style="margin-top: 8rpx;" value="{{item.checked}}" bind:change="onWorldItemChange" data-index="{{index}}" />
+              <van-checkbox icon-size="26rpx" style="margin-top: 8rpx;" value="{{item.checked}}" bind:change="onWorldItemChange" data-index="{{index}}" catch:tap="catchTapEvent" />
               <view style="width: 100%;">
                 <text style="font-weight: 500; font-size: 30rpx;">{{item.title}}</text>
                 <text style="font-size: 26rpx; color: #8FAADC;font-weight: 500;"> {{item.desc}}</text>
