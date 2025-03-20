@@ -99,3 +99,62 @@ export const clearStorage = () => {
     console.error(`清空本地存储数据时发生错误:`, e)
   }
 }
+
+/**
+ * 从字符串中提取特定键值对的值
+ * @param {string} str - 包含键值对的字符串，格式为 "key1=value1,key2=value2,..."
+ * @returns {Object} 包含提取结果的对象，包含 battery、volume、text、uuid 的值
+ */
+export const extractKeyValuePairs = (str) => {
+  if (typeof str !== 'string') {
+    console.error("输入的参数必须是字符串类型。");
+    return null;
+  }
+  // 定义一个对象用于存储结果
+  const result = {
+    uuid: null,
+    battery: null,
+    volume: null,
+    text: null
+  };
+  
+  // 将字符串按逗号分割成键值对数组
+  const pairs = str.split(',');
+
+  // 遍历键值对
+  for (const pair of pairs) {
+    // 按等号分割键和值
+    const [key, value] = pair.split('=');
+
+    // 根据键存储对应的值
+    if (key === 'uuid') {
+      result.uuid = value;
+    } else if (key === 'battery') {
+      result.battery = value;
+    } else if (key === 'volume') {
+      result.volume = value;
+    } else if (key === 'text') {
+      result.text = value;
+    }
+  }
+
+  return result;
+}
+
+/**
+ * 防抖处理函数，用于限制某个函数在短时间内被频繁触发的次数
+ * @param {Function} func - 需要防抖处理的函数
+ * @param {number} delay - 防抖延迟时间（单位：毫秒）
+ * @returns {Function} 返回防抖后的函数
+ */
+export const debounce = (func, delay) => {
+  let timer = null;
+  return function (...args) {
+    if (timer) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
+}
