@@ -7,7 +7,10 @@ Page({
     devicesList: [],
     searching: false,
   },
-  onLoad: function() {
+  onLoad: function(options) {
+    if(options.connectbluetooth) {
+      this.connectbluetooth = options.connectbluetooth
+    }
     _this = this;
     xBlufi.initXBlufi(1);
     console.log("xBlufi", xBlufi.XMQTT_SYSTEM)
@@ -33,9 +36,16 @@ Page({
             title: '连接成功',
             icon: 'none'
           })
-          wx.navigateTo({
-            url: '../device/index?deviceId=' + options.data.deviceId + '&name=' + options.data.name,
-          });
+          if(!this.connectbluetooth) {
+            wx.navigateTo({
+              url: '../device/index?deviceId=' + options.data.deviceId + '&name=' + options.data.name,
+            });
+          }else {
+            wx.navigateTo({
+              url: '../device/index?connectbluetooth=true&deviceId=' + options.data.deviceId + '&name=' + options.data.name,
+            });
+          }
+          
 
         } else {
           // wx.hideLoading()

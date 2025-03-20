@@ -1,4 +1,5 @@
 var xBlufi = require("../../../utils/blufi/xBlufi.js");
+
 Page({
   data: {
     version: '2.2',
@@ -16,6 +17,7 @@ Page({
     this.initWifi()
   },
   onLoad: function (options) {
+    this.connectbluetooth = options.connectbluetooth
     var that = this
     this.initWifi()
     that.setData({
@@ -96,11 +98,11 @@ Page({
         break;
       case xBlufi.XBLUFI_TYPE.TYPE_RECIEVE_CUSTON_DATA:
         console.log("收到设备发来的自定义数据结果：", (options.data))
-        wx.showModal({
-          title: '收到自定义设备数据',
-          content: `【${options.data}】`,
-          showCancel: false, //是否显示取消按钮
-        })
+        // wx.showModal({
+        //   title: '收到自定义设备数据',
+        //   content: `【${options.data}】`,
+        //   showCancel: false, //是否显示取消按钮
+        // })
         break;
       case xBlufi.XBLUFI_TYPE.TYPE_CONNECT_NEAR_ROUTER_LISTS:
         //console.log(options.data)
@@ -122,6 +124,19 @@ Page({
           wx.showLoading({
             title: '模组获取周围WiFi列表...',
           })
+          if(this.connectbluetooth) {
+            wx.switchTab({
+              url: '../../../pages/index/index',
+              success: function(res) {
+                console.log('跳转成功，页面参数:', res);
+                // 在这里可以执行跳转成功后的逻辑
+              },
+              fail: function(err) {
+                console.error('跳转失败，错误信息:', err);
+                // 在这里可以处理跳转失败的情况
+              }
+            })
+          }
         } else {
           console.log('初始化失败')
           that.setData({

@@ -526,29 +526,29 @@ function init() {
           });
         }
       });
-    else wx.closeBLEConnection({
-      deviceId: options.deviceId,
-      success: function (res) {
-        console.log('断开成功')
-        self.data.deviceId = null
-        mDeviceEvent.notifyDeviceMsgEvent({
-          'type': mDeviceEvent.XBLUFI_TYPE.TYPE_CLOSE_CONNECTED,
-          'result': true,
-          'data': {
-            deviceId: options.deviceId,
-            name: options.name
-          }
-        });
-      },
-      fail: function (res) {
-        self.data.deviceId = null
-        mDeviceEvent.notifyDeviceMsgEvent({
-          'type': mDeviceEvent.XBLUFI_TYPE.TYPE_CLOSE_CONNECTED,
-          'result': false,
-          'data': res,
-        });
-      }
-    })
+    // else wx.closeBLEConnection({
+    //   deviceId: options.deviceId,
+    //   success: function (res) {
+    //     console.log('断开成功')
+    //     self.data.deviceId = null
+    //     mDeviceEvent.notifyDeviceMsgEvent({
+    //       'type': mDeviceEvent.XBLUFI_TYPE.TYPE_CLOSE_CONNECTED,
+    //       'result': true,
+    //       'data': {
+    //         deviceId: options.deviceId,
+    //         name: options.name
+    //       }
+    //     });
+    //   },
+    //   fail: function (res) {
+    //     self.data.deviceId = null
+    //     mDeviceEvent.notifyDeviceMsgEvent({
+    //       'type': mDeviceEvent.XBLUFI_TYPE.TYPE_CLOSE_CONNECTED,
+    //       'result': false,
+    //       'data': res,
+    //     });
+    //   }
+    // })
   })
 
   mDeviceEvent.listenInitBleEsp32(true, function (options) {

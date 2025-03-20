@@ -26,12 +26,12 @@
 
 
 
-          <!-- <view class="weui-cell">
+          <view class="weui-cell">
             <view class="weui-cell__hd"><label class="weui-label">数据：</label></view>
             <view class="weui-cell__bd">
               <input class="weui-input" bindinput="bindCustomDataInput" type="text" placeholder="在此输入自定义数据" />
             </view>
-          </view> -->
+          </view>
         </view>
       </view>
     </view>
