@@ -1,4 +1,9 @@
-import { setStorage, getStorage } from '../../utils/index'
+var xBlufi = require("../../utils/blufi/xBlufi");
+import { createStoreBindings } from 'mobx-miniprogram-bindings';
+import { setStorage, getStorage } from '../../utils/index';
+import { extractKeyValuePairs } from '../../utils/index';
+import { deviceInfoStore } from '../../store/deviceInfo'; // 引入 store
+import { debounce } from '../../utils/index';
 
 Page({
   data: {
@@ -10,13 +15,24 @@ Page({
       '../../images/expression4.png'
     ],
     lastExpressionDate: '',
-    electricity: 100,
-    sound: 5,
-    expressionStyle: ''
+    expressionStyle: '',
+    sound: 4
   },
 
   onLoad() {
+    xBlufi.listenDeviceMsgEvent(true, this.funListenDeviceMsgEvent);
+    // 手动调用方式 后续可以通过this.data.userInfo访问到store中的数据了
+		this.storeBindings = createStoreBindings(this, {
+			store: deviceInfoStore, // 将userStore绑定到当前页面
+      fields: ['deviceOptions'], // 将userStore中的userInfo和token映射到当前页面
+      actions: ['setDeviceOptions']
+		})
+    // 初始化时从 store 获取数据
+    this.setData({
+      deviceOptions: deviceInfoStore.deviceOptions,
+    });
     this.updateExpression()
+    this.debouncedNotifySendCustomData = debounce(xBlufi.notifySendCustomData, 3000);
   },
 
   onShow() {
@@ -39,6 +55,23 @@ Page({
     }
 
     this.setData({ expressionStyle })
+  },
+
+  onUnload: function () {
+    xBlufi.listenDeviceMsgEvent(false, this.funListenDeviceMsgEvent);
+    // 手动销毁，防止内存泄露
+    this.storeBindings.destroyStoreBindings()
+  },
+
+  funListenDeviceMsgEvent: function (options) {
+    // console.log("收到设备发来的自定义数据结果xxxxxxx：", (options.data))
+    if(typeof options.data === 'string'){
+      // 更新 store 中的 deviceOptions 状态
+      console.log("收到设备发来的自定义数据结果---：", (options.data))
+      let result = extractKeyValuePairs(options.data);
+      console.log("特殊打印" + result.battery);
+      this.setDeviceOptions(result);
+    }
   },
 
   updateExpression() {
@@ -79,6 +112,10 @@ Page({
         return
       }
       sound = sound - 1
+       //发送音量给蓝牙
+      this.debouncedNotifySendCustomData({
+        customData: String(sound),
+      })
     } else if (type === 'plus') {
       if (sound >= 5) {
         wx.showToast({
@@ -89,8 +126,20 @@ Page({
         return
       }
       sound = sound + 1
+      //发送音量给蓝牙
+      this.debouncedNotifySendCustomData({
+        customData: String(sound),
+      })
     }
     
     this.setData({ sound })
+  },
+
+  Search() {
+    wx.navigateTo({
+      url: '../../packageDevice/pages/search/index?connectbluetooth=true',
+    });
   }
+
+
 });
