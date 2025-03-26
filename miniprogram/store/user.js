@@ -33,6 +33,13 @@ export const userStore = observable(
       });
     }),
 
+    // 更新用户uuid Action
+    updateUserUuidAction: action(function (data) {
+      this.userInfo = Object.assign({}, this.userInfo, {
+        uuid: data,
+      });
+    }),
+
     // 更新用户偏好——生日
     updateUserBirthdayAction: action(function (data) {
       this.userInfo = {
