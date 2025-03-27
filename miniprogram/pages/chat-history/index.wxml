@@ -1,33 +1,89 @@
-<!-- <view class="container">
-  <view class="header">回顾聊天</view>
-  <view class="message-list">
-    <view class="message" wx:for="{{messages}}" wx:key="index" style="{{item.isSender ? 'background-color: #e1f5fe;' : 'background-color: #fff;'}}">
-      <image class="avatar" src="{{item.avatar}}" />
-      <text>{{item.content}}</text>
-    </view>
-  </view>
-  <view class="input-area">
-    <input class="input" placeholder="输入消息..." />
-    <button class="send-button">发送</button>
-  </view>
-</view> -->
+<wxs module="utils">
+  function formatTime(timestamp) {
+    if (!timestamp) return '';
 
-<view class="container">
+    var date = getDate(parseInt(timestamp));
+    var now = getDate();
+
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+
+    if (month < 10) month = '0' + month;
+    if (day < 10) day = '0' + day;
+    if (hours < 10) hours = '0' + hours;
+    if (minutes < 10) minutes = '0' + minutes;
+
+    var isToday = (date.getFullYear() === now.getFullYear() &&
+      date.getMonth() === now.getMonth() &&
+      date.getDate() === now.getDate());
+
+    if (isToday) {
+      return hours + ':' + minutes;
+    }
+    
+    var yesterday = getDate(now.getTime() - 86400000);
+    var isYesterday = (date.getFullYear() === yesterday.getFullYear() &&
+      date.getMonth() === yesterday.getMonth() &&
+      date.getDate() === yesterday.getDate());
+
+    if (isYesterday) {
+      return '昨天 ' + hours + ':' + minutes;
+    }
+
+    // 一年内
+    if (date.getFullYear() === now.getFullYear()) {
+      return month + '月' + day + '日 ' + hours + ':' + minutes;
+    }
+
+    // 超过一年
+    return year + '年' + month + '月' + day + '日 ' + hours + ':' + minutes;
+  }
+</wxs>
+
+<view class="chat-history">
   <view class="header">
-    <!-- <text class="title">回顾聊天</text> -->
-    <image class="reviewChatStory" src="../../images/reviewChatStory.png" mode=""/>
+    <image class="reviewChatStory" src="../../images/reviewChatStory.png" />
   </view>
-  <view class="message-list">
-    <view class="message" wx:for="{{messages}}" wx:key="index" class="{{item.sender}}">
-      <view class="message-content-container">
-        <!-- <image class="avatar" wx:if="{{item.sender === 'sender1'}}" src="{{item.avatar}}" mode="aspectFit"></image> -->
-        <image class="avatar" src="../../images/avatar.jpg" wx:if="{{item.sender === 'sender1'}}"/>
-        <text class="message-content">{{item.content}}</text>
+  
+  <scroll-view scroll-y class="message-list" enable-back-to-top enhanced show-scrollbar="{{false}}" bindscrolltolower="onReachBottom" refresher-enabled
+  refresher-triggered="{{loadingStatus.loading && loadingStatus.pageIndex === 1}}"
+  bindrefresherrefresh="onPullDownRefresh">
+    <block wx:if="{{chatMessages.length === 0}}">
+      <view class="empty-state">
+        <text class="empty-text">「暂无聊天记录, 请先连接设备」</text>
       </view>
+    </block>
+    
+    <view wx:else class="messages-container">
+      <block wx:for="{{chatMessages}}" wx:key="index">
+        <view wx:if="{{index === 0 || utils.formatTime(item.timestamp).slice(0,2) !== utils.formatTime(messages[index-1].timestamp).slice(0,2)}}" class="date-divider">
+          <view class="date-text">{{utils.formatTime(item.timestamp).indexOf(' ') > -1 ? utils.formatTime(item.timestamp).split(' ')[0] : '今天'}}</view>
+        </view>
+        
+        <view class="message-item {{item.sender === 'usr' ? 'user-message' : 'device-message'}}">
+          <view class="avatar {{item.sender === 'usr' ? 'user-avatar' : 'device-avatar'}}">
+            <image src="{{item.sender === 'usr' ? '../../images/device.png' : '../../images/avatar.jpg'}}" mode="aspectFill"></image>
+          </view>
+          
+          <view class="message-content">
+            <view class="bubble">{{item.content}}</view>
+            <view class="time">{{utils.formatTime(item.timestamp).indexOf(' ') > -1 ? utils.formatTime(item.timestamp).split(' ')[1] : utils.formatTime(item.timestamp)}}</view>
+          </view>
+        </view>
+      </block>
+
+    <view wx:if="{{loadingMore}}" class="loading-more">
+      <view class="loading-dot"></view>
+      <view class="loading-dot"></view>
+      <view class="loading-dot"></view>
     </view>
-  </view>
-  <!-- <view class="input-area">
-    <input class="input" placeholder="输入消息..." bindinput="onInput" />
-    <button class="send-button" bindtap="sendMessage">发送</button>
-  </view> -->
+    
+    <view wx:if="{{!loadingStatus.hasMore && chatMessages.length > 0}}" class="no-more">
+      没有更多消息了
+    </view>
+    </view>
+  </scroll-view>
 </view>

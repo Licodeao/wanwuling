@@ -1,0 +1,4 @@
+<view class="container">
+  <van-field type="textarea" autosize placeholder="请输入你想打造的人设" custom-style="width: 100%; height: 500rpx; margin-bottom: 30rpx;" />
+  <van-button type="info" round size="large" bind:tap="handleSubmit">提交修改</van-button>
+</view>

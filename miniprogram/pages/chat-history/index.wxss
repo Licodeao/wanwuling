@@ -1,66 +1,44 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
 .header {
   margin-top: 10px;
   text-align: center;
 }
 
-.title {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.message-list {
-  flex: 1;
-  padding: 10px;
-  overflow-y: scroll;
-}
-
-.message {
-  margin-bottom: 10px;
-  max-width: 50%; /* 设置最大宽度为50% */
-  padding: 30px;
-  border-radius: 5px;
-}
-
-.message-content-container {
-  display: flex;
-  align-items: center; /* 垂直居中 */
-  width: 100%; /* 确保容器占据整个宽度 */
-
-}
-
 .message-content {
-  flex: 1; 
-  word-wrap: break-word; /* 长文字换行 */
-  min-width: 0; /* 确保文字不会无限扩展 */
-  width: min-content; /* 根据文字内容决定宽度 */
-  max-width: 100%; /* 确保文字不会超出容器 */
-  line-height: 1.5; /* 设置行距为 1.3 倍 */
+  flex       : 1;
+  word-wrap  : break-word;
+  /* 长文字换行 */
+  min-width  : 0;
+  /* 确保文字不会无限扩展 */
+  width      : min-content;
+  /* 根据文字内容决定宽度 */
+  max-width  : 100%;
+  /* 确保文字不会超出容器 */
+  line-height: 1.5;
+  /* 设置行距为 1.3 倍 */
 }
 
-.sender1 {
-  margin-top: 14px;
-  padding: 10px;
+.ai {
+  margin-top         : 14px;
+  padding            : 10px;
   /* background-color: #e1f5fe; */
-  align-self: flex-start; /* 左侧 */
-  margin-right: auto; /* 向右推 */
-  border-radius: 10px;
+  align-self         : flex-start;
+  /* 左侧 */
+  margin-right       : auto;
+  /* 向右推 */
+  border-radius      : 10px;
 }
 
-.sender2 {
-  margin-top: 14px;
-  max-width: 75%;
-  padding: 15px;
-  background-color: #e1f5fe;
+.usr {
+  margin-top         : 14px;
+  max-width          : 75%;
+  padding            : 15px;
+  background-color   : #e1f5fe;
   /* background-color: #ffe0b2; */
-  align-self: flex-end; /* 右侧 */
-  margin-left: auto; /* 向左推 */
-  border-radius: 10px;
+  align-self         : flex-end;
+  /* 右侧 */
+  margin-left        : auto;
+  /* 向左推 */
+  border-radius      : 10px;
 }
 
 .input-area {
@@ -69,10 +47,10 @@
 }
 
 .input {
-  flex: 1;
-  border: 1px solid #ccc;
+  flex         : 1;
+  border       : 1px solid #ccc;
   border-radius: 5px;
-  padding: 5px;
+  padding      : 5px;
 }
 
 .send-button {
@@ -80,15 +58,204 @@
 }
 
 .avatar {
-  width: 40px; /* 头像宽度 */
-  height: 40px; /* 头像高度 */
-  border-radius: 50%; /* 圆形 */
-  background-color: rgb(245, 135, 10); /* 头像背景色 */
-  margin-right: 20px; /* 头像与消息内容的间距 */
-  flex-shrink: 0; /* 确保头像不会被压缩 */
+  width           : 40px;
+  /* 头像宽度 */
+  height          : 40px;
+  /* 头像高度 */
+  border-radius   : 50%;
+  /* 圆形 */
+  background-color: rgb(245, 135, 10);
+  /* 头像背景色 */
+  margin-right    : 20px;
+  /* 头像与消息内容的间距 */
+  flex-shrink     : 0;
+  /* 确保头像不会被压缩 */
 }
 
 .reviewChatStory {
   height: 55px;
-  width: 130px;
+  width : 130px;
+}
+
+.chat-history {
+  display       : flex;
+  flex-direction: column;
+  height        : 100vh;
+  box-sizing    : border-box;
+}
+
+.title {
+  font-size  : 18px;
+  font-weight: 600;
+  color      : #333333;
+}
+
+.message-list {
+  flex      : 1;
+  padding   : 20rpx;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.empty-state {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+}
+
+.empty-text {
+  font-size  : 16px;
+  color      : #999;
+  font-weight: 300;
+}
+
+.date-divider {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  margin         : 24px 0 16px;
+  position       : relative;
+}
+
+.date-text {
+  background-color: #e3e3e3;
+  color           : #666666;
+  font-size       : 12px;
+  padding         : 4px 12px;
+  border-radius   : 16px;
+  z-index         : 1;
+}
+
+.message-item {
+  display      : flex;
+  margin-bottom: 16px;
+  position     : relative;
+}
+
+.user-message {
+  flex-direction: row-reverse;
+}
+
+.device-message {
+  flex-direction: row;
+}
+
+.avatar {
+  width        : 40px;
+  height       : 40px;
+  border-radius: 50%;
+  margin       : 0 8px;
+  overflow     : hidden;
+}
+
+.avatar image {
+  width : 100%;
+  height: 100%;
+}
+
+.user-avatar {
+  background-color: #e3f6ff;
+}
+
+.device-avatar {
+  background-color: #f8e8ff;
+}
+
+.message-content {
+  max-width     : 70%;
+  display       : flex;
+  flex-direction: column;
+}
+
+.user-message .message-content {
+  align-items: flex-end;
+}
+
+.device-message .message-content {
+  align-items: flex-start;
+}
+
+.bubble {
+  padding      : 12px 16px;
+  border-radius: 18px;
+  font-size    : 15px;
+  line-height  : 1.4;
+  word-break   : break-all;
+  position     : relative;
+}
+
+.user-message .bubble {
+  background-color       : #e1f5fe;
+  color                  : black;
+  border-top-right-radius: 4px;
+}
+
+.device-message .bubble {
+  background-color      : white;
+  color                 : #333333;
+  border-top-left-radius: 4px;
+  box-shadow            : 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.time {
+  font-size : 12px;
+  color     : #999999;
+  margin-top: 4px;
+}
+
+@supports (padding-bottom: constant(safe-area-inset-bottom)) {
+  .chat-history {
+    padding-bottom: constant(safe-area-inset-bottom);
+  }
+}
+
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .chat-history {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+.loading-more {
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  height         : 60px;
+  margin-bottom  : 10px;
+}
+
+.loading-dot {
+  width           : 8px;
+  height          : 8px;
+  border-radius   : 50%;
+  background-color: #999;
+  margin          : 0 3px;
+  animation       : loading 1.4s infinite ease-in-out both;
+}
+
+.loading-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loading-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes loading {
+
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+
+  40% {
+    transform: scale(1.0);
+  }
+}
+
+.no-more {
+  text-align: center;
+  color     : #999;
+  font-size : 12px;
+  padding   : 16px 0;
 }
