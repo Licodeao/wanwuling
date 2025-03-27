@@ -42,6 +42,7 @@
   <view class="cells">
     <info-cell title="能力成长报告" />
     <info-cell title="互动成就徽章" />
+    <info-cell title="人设修改" url="/packageUser/pages/character/index" />
     <info-cell title="常见问题解答" />
     <info-cell title="联系客服反馈故障" />
     <info-cell title="产品优化建议" />

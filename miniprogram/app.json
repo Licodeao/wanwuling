@@ -18,7 +18,8 @@
         "pages/info-collection/step2/index",
         "pages/info-collection/step3/index",
         "pages/info-collection/step4/index",
-        "components/infoTips/index"
+        "components/infoTips/index",
+        "pages/character/index"
       ]
     },
     {
